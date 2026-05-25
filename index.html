@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Trip 2027 — Budapest vs Hamburg</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  background: #0a0c0b;
+  color: #e2e8e4;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── VARIABLES ────────────────────────────────────── */
+:root {
+  --green:   #00d46a;
+  --dark:    #0a0c0b;
+  --surface: #131714;
+  --card:    #1a1f1c;
+  --border:  #252c28;
+  --muted:   #6b7d72;
+  --text:    #e2e8e4;
+  --bud:     #f0a500;
+  --ham:     #e03535;
+  --bud-dim: rgba(240,165,0,0.12);
+  --ham-dim: rgba(224,53,53,0.12);
+}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  position: relative;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 24px 48px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: '⚽';
+  position: absolute;
+  font-size: 320px;
+  opacity: 0.03;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+}
+.hero-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 10vw, 96px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.hero h1 .city-a { color: var(--bud); }
+.hero h1 .vs     { color: var(--muted); font-size: 0.45em; vertical-align: middle; padding: 0 8px; }
+.hero h1 .city-b { color: var(--ham); }
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.hero-pill {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.hero-pill strong { color: var(--text); font-weight: 500; }
+
+/* ── NAV TABS ─────────────────────────────────────── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(10,12,11,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 16px 22px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--muted);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  position: relative;
+  top: 1px;
+}
+.nav-btn:hover { color: var(--text); }
+.nav-btn.active-bud { color: var(--bud); border-bottom-color: var(--bud); }
+.nav-btn.active-ham { color: var(--ham); border-bottom-color: var(--ham); }
+.nav-btn.active-cmp { color: var(--green); border-bottom-color: var(--green); }
+
+/* ── PANELS ───────────────────────────────────────── */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ── SECTION WRAPPER ──────────────────────────────── */
+.section { max-width: 820px; margin: 0 auto; padding: 40px 20px; }
+.section + .section { padding-top: 0; }
+
+/* ── SECTION TITLE ────────────────────────────────── */
+.sec-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* ── CITY BANNER ──────────────────────────────────── */
+.city-banner {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.city-banner-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 10vw, 72px);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.bud-color { color: var(--bud); }
+.ham-color { color: var(--ham); }
+.city-banner-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.4;
+  padding-bottom: 8px;
+}
+
+/* ── ALERT BOX ────────────────────────────────────── */
+.alert {
+  background: rgba(240,165,0,0.08);
+  border: 1px solid rgba(240,165,0,0.25);
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: #e8c878;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 10px;
+}
+.alert-ham { background: rgba(224,53,53,0.08); border-color: rgba(224,53,53,0.25); color: #f09090; }
+.alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+
+/* ── QUICK FACTS GRID ─────────────────────────────── */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.fact {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.fact-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.fact-val { font-size: 14px; font-weight: 500; line-height: 1.4; }
+.fact-val strong { color: var(--green); }
+
+/* ── DAY BLOCK ────────────────────────────────────── */
+.day-block { margin-bottom: 36px; }
+.day-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.day-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--border);
+}
+.day-info-text h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+.day-info-text .day-date {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ── EVENT CARDS ──────────────────────────────────── */
+.events { display: flex; flex-direction: column; gap: 8px; }
+.event {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px 14px 14px;
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+.event:hover { border-color: var(--muted); }
+.event.ev-active  { border-left: 3px solid var(--green); }
+.event.ev-match   { border-left: 3px solid var(--bud); }
+.event.ev-match-h { border-left: 3px solid var(--ham); }
+.event.ev-night   { border-left: 3px solid #8060d0; }
+
+.event-time {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  text-align: right;
+  padding-top: 2px;
+  line-height: 1.4;
+}
+.event-body {}
+.event-title {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.event-emoji { font-size: 16px; }
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+.badge-active { background: rgba(0,212,106,0.15); color: var(--green); }
+.badge-match  { background: rgba(240,165,0,0.15); color: var(--bud); }
+.badge-matchh { background: rgba(224,53,53,0.15); color: var(--ham); }
+.badge-night  { background: rgba(128,96,208,0.15); color: #a080e8; }
+
+.event-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.event-desc strong { color: #b8c8bc; font-weight: 500; }
+
+/* ── BUDGET TABLE ─────────────────────────────────── */
+.budget-wrap { overflow-x: auto; margin-bottom: 24px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+th {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.4;
+}
+tr:last-child td { border-bottom: none; }
+tr.total-row td {
+  font-weight: 600;
+  font-size: 14px;
+  border-top: 2px solid var(--border);
+  padding-top: 14px;
+}
+.bud-total { color: var(--bud); }
+.ham-total { color: var(--ham); }
+.td-note { color: var(--muted); font-size: 12px; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ── COMPARISON TABLE ─────────────────────────────── */
+.cmp-table th { color: var(--green); }
+.cmp-table td:nth-child(2) { color: var(--bud); }
+.cmp-table td:nth-child(3) { color: var(--ham); }
+.cmp-table td:first-child { color: var(--muted); font-weight: 500; }
+
+/* ── TIP GRID ─────────────────────────────────────── */
+.tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 4px;
+}
+.tip {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.tip h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.tip p  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+/* ── VERDICT CARD ─────────────────────────────────── */
+.verdict {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.verdict h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.verdict p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+.verdict p:last-child { margin-bottom: 0; }
+.verdict p strong { color: var(--text); font-weight: 500; }
+
+/* ── FOOTER ───────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 32px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── MOBILE ───────────────────────────────────────── */
+@media (max-width: 520px) {
+  .hero { padding: 44px 20px 36px; }
+  .section { padding: 28px 16px; }
+  .event { grid-template-columns: 52px 1fr; gap: 8px; padding: 12px 14px 12px 10px; }
+  .day-num { font-size: 40px; }
+  th, td { padding: 8px 10px; font-size: 12.5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero-eyebrow">Football Weekend Trip · Planning Document</div>
+  <h1>
+    <span class="city-a">Budapest</span>
+    <span class="vs">vs</span>
+    <span class="city-b">Hamburg</span>
+  </h1>
+  <div class="hero-meta">
+    <div class="hero-pill">🗓 <strong>16–18 April 2027</strong></div>
+    <div class="hero-pill">👥 <strong>7–12 people</strong></div>
+    <div class="hero-pill">⚽ <strong>Football + Activities + Nightlife</strong></div>
+    <div class="hero-pill">🏠 <strong>Group accommodation</strong></div>
+  </div>
+</header>
+
+<!-- ═══════════════ NAV ════════════════ -->
+<nav class="nav">
+  <button class="nav-btn active-cmp" onclick="show('compare')">⚖️ Compare</button>
+  <button class="nav-btn" onclick="show('budapest')">🇭🇺 Budapest</button>
+  <button class="nav-btn" onclick="show('hamburg')">🇩🇪 Hamburg</button>
+  <button class="nav-btn" onclick="show('budget')">💶 Budgets</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- COMPARE PANEL                                              -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="panel-compare" class="panel active">
+<div class="section">
+
+  <div class="sec-title">City Comparison</div>
+
+  <div class="budget-wrap">
+  <table class="cmp-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>🇭🇺 Budapest</th>
+        <th>🇩🇪 Hamburg</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Travel from CPH</td><td>~1h 50min direct flight</td><td>~1h 30min flight <em>or</em> 4h 30min train</td></tr>
+      <tr><td>Football</td><td>Ferencváros — NB I (Hungarian league)</td><td>HSV — Bundesliga (top German league)</td></tr>
+      <tr><td>Stadium capacity</td><td>~23,000</td><td>~57,000</td></tr>
+      <tr><td>Match ticket</td><td>€10–25</td><td>€20–60</td></tr>
+      <tr><td>Return flight</td><td>€80–180 / person</td><td>€80–160 / person</td></tr>
+      <tr><td>Accommodation</td><td>€30–50 / person / night</td><td>€50–80 / person / night</td></tr>
+      <tr><td>Food &amp; drink</td><td>€€ — very cheap</td><td>€€€ — moderate</td></tr>
+      <tr><td>Total estimate</td><td><strong>€350–605 / person</strong></td><td><strong>€375–690 / person</strong></td></tr>
+      <tr><td>Nightlife</td><td>Ruin bars, disco-palaces</td><td>Reeperbahn, Sternschanze</td></tr>
+      <tr><td>Signature activity</td><td>Sparty, Danube cruise, shooting range</td><td>Beer bike, Fischmarkt, Elbe cruise</td></tr>
+      <tr><td>Overall value</td><td>★★★★★</td><td>★★★★</td></tr>
+      <tr><td>Best for</td><td>Budget-first, max activity variety</td><td>Top-level football, train travel option</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="sec-title" style="margin-top:36px;">Verdict</div>
+
+  <div class="verdict">
+    <h3 style="color:var(--bud)">Budapest is the stronger pick for this trip</h3>
+    <p>It's one of Europe's most established group-trip destinations, significantly cheaper across every category, and the activities scene is purpose-built for lads' weekends. The ruin bars are unlike anything in Northern Europe, and your money goes roughly twice as far compared to Hamburg on food, drinks, and accommodation.</p>
+    <p><strong>Choose Hamburg</strong> if Bundesliga football quality is non-negotiable, or if the group prefers arriving by train (no airport stress). The Reeperbahn nightlife is equally legendary, and the Beer Bike is a uniquely Hamburg experience.</p>
+  </div>
+
+  <div class="sec-title">Booking Timeline</div>
+  <div class="facts">
+    <div class="fact"><div class="fact-label">Now</div><div class="fact-val">Decide city, agree dates</div></div>
+    <div class="fact"><div class="fact-label">Summer 2026</div><div class="fact-val">Fixtures released — <strong>book match tickets immediately</strong></div></div>
+    <div class="fact"><div class="fact-label">Jul–Aug 2026</div><div class="fact-val">Book flights &amp; group apartment</div></div>
+    <div class="fact"><div class="fact-label">Jan–Feb 2027</div><div class="fact-val">Book all activities (karting, paintball, boat cruise)</div></div>
+    <div class="fact"><div class="fact-label">April 2027</div><div class="fact-val">🏆 Trip happens</div></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- BUDAPEST PANEL                                             -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="panel-budapest" class="panel">
+<div class="section">
+
+  <div class="city-banner">
+    <div class="city-banner-name bud-color">Budapest</div>
+    <div class="city-banner-sub">Hungary · 16–18 April 2027<br>Ferencváros · Ruin Bars · Danube</div>
+  </div>
+
+  <div class="facts" style="margin-bottom:20px;">
+    <div class="fact"><div class="fact-label">Flight</div><div class="fact-val"><strong>~1h 50min</strong> direct CPH→BUD<br>Wizz Air / Ryanair / Norwegian</div></div>
+    <div class="fact"><div class="fact-label">Football</div><div class="fact-val">Ferencváros, Groupama Arena<br><strong>€10–25</strong> per ticket</div></div>
+    <div class="fact"><div class="fact-label">Accommodation</div><div class="fact-val">Large apt, District VII<br><strong>€300–500/night total</strong></div></div>
+    <div class="fact"><div class="fact-label">Budget</div><div class="fact-val">All-in estimate<br><strong>€350–605 / person</strong></div></div>
+  </div>
+
+  <div class="alert">
+    <span class="alert-icon">⚠️</span>
+    <span>NB I fixture schedule for April 2027 releases summer 2026. Check <strong>ftc.hu</strong> immediately when available and confirm a Ferencváros home game that weekend before booking flights.</span>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">01</div>
+      <div class="day-info-text">
+        <div class="day-date">Friday · 16 April</div>
+        <h3>Arrival + First Night Out</h3>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">07:00<br>–<br>10:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">✈️</span> Fly CPH → BUD</div>
+          <div class="event-desc">~1h 50min direct. Aim for a 07:00–08:00 departure to land by ~10:00 local time. Airlines: Wizz Air, Ryanair, Norwegian, SAS.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">~11:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🏠</span> Check In — Group Apartment, District VII</div>
+          <div class="event-desc">4–5 bedroom flat in the Jewish Quarter. Walking distance to ruin bars, restaurants, and the city centre. Drop bags, freshen up.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">13:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🎯</span> Shooting Range <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Kick the trip off with a group shooting session — pistols, rifles, and AK-47s available. ~2–3 hours. Great competitive opener. Book ahead for 7–12. <strong>~€40–70/person.</strong></div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">16:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🍺</span> Ruin Bar Warm-Up — Szimpla Kert</div>
+          <div class="event-desc">Budapest's most iconic ruin bar in District VII. Then work through Instant-Fogas, Élesztő, and Mazel Tov — all within walking distance of each other.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">19:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🍖</span> Group Dinner — Hungarian Grill House</div>
+          <div class="event-desc">Long-table booking at a traditional Magyar restaurant. Goulash, lángos, schnitzel, and pálinka shots. Budget: <strong>~€15–20/person</strong> including drinks.</div>
+        </div>
+      </div>
+      <div class="event ev-night">
+        <div class="event-time">21:30+</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🌃</span> Night Out — Disco Palaces <span class="badge badge-night">Night</span></div>
+          <div class="event-desc">Instant-Fogas, Akvárium Klub, or LÄRM. Budapest clubs run until 6am. Relaxed dress code. Entry <strong>€5–10.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div class="day-info-text">
+        <div class="day-date">Saturday · 17 April</div>
+        <h3>Activities Day + The Match</h3>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">10:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🍳</span> Late Breakfast at the Apartment</div>
+          <div class="event-desc">Pick up supplies the night before. Big group breakfast, recover, plan the day. Budapest has great local bakeries for fresh bread and pastries.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">12:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🏎️</span> Go-Karting — Grand Prix Format <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Indoor track with timed heats and a group final. Book a private session. <strong>~€25–40/person.</strong> Book ahead online.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">14:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">💥</span> Paintball <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Team paintball outside the city — split into two football-team halves. Transport usually arranged through the operator. 1.5–2 hrs. <strong>~€20–35/person.</strong></div>
+        </div>
+      </div>
+      <div class="event ev-match">
+        <div class="event-time">~18:00<br>kick-off</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">⚽</span> Ferencváros Home Match — Groupama Arena <span class="badge badge-match">Match</span></div>
+          <div class="event-desc">~23,000 capacity, passionate ultras atmosphere. Tickets <strong>€10–25,</strong> book at ftc.hu once the 2026–27 schedule drops. Metro M3 or taxi to stadium.</div>
+        </div>
+      </div>
+      <div class="event ev-night">
+        <div class="event-time">21:00+</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🍻</span> Post-Match Bar Crawl <span class="badge badge-night">Night</span></div>
+          <div class="event-desc">Post-match drinks near the stadium, then back into District VII. Try rooftop bars near St. Stephen's Basilica for a stylish opener, then clubs.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div class="day-info-text">
+        <div class="day-date">Sunday · 18 April</div>
+        <h3>Danube Cruise + Departure</h3>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">10:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">☕</span> Recovery Brunch</div>
+          <div class="event-desc">Budapest café culture is excellent. Strong espresso and chimney cakes. Try a café on the Grand Boulevard or near the Central Market Hall.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">12:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🛥️</span> Danube Boat Party — Open Bar Cruise <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Private group cruise ~1.5 hrs with open bar. Views of Buda Castle, Parliament, and Chain Bridge. Music on board. <strong>~€30–50/person.</strong> Book ahead.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">14:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🏙️</span> Chain Bridge + Fisherman's Bastion</div>
+          <div class="event-desc">Short walk across the Chain Bridge and up to Fisherman's Bastion for panoramic views. Free, 30 minutes, great group photo opportunity.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">17:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">✈️</span> Head to Airport — Fly Home BUD → CPH</div>
+          <div class="event-desc">Multiple evening flights (Wizz Air, Ryanair). Airport ~30 min from centre by taxi or 100E airport bus.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Practical Tips</div>
+  <div class="tips">
+    <div class="tip"><h4>🏠 Accommodation</h4><p>District VII (Jewish Quarter). 4–5 bed apt on Airbnb/VRBO. €300–500/night total. Book 6–9 months ahead.</p></div>
+    <div class="tip"><h4>💶 Currency</h4><p>Hungarian Forint (HUF). Cards widely accepted; carry some cash for bars.</p></div>
+    <div class="tip"><h4>🚕 Transport</h4><p>Bolt app (like Uber) — excellent and very cheap. Metro also reliable. Rides: €3–5.</p></div>
+    <div class="tip"><h4>📱 Book Ahead</h4><p>Shooting range, karting, and paintball need advance booking for groups of 7–12.</p></div>
+    <div class="tip"><h4>💰 Value</h4><p>Beer ~€1.50, dinner €10–15/person, taxis €3–5. One of Europe's best-value cities.</p></div>
+    <div class="tip"><h4>⚽ Tickets</h4><p>Check ftc.hu summer 2026. Confirm home game before booking flights.</p></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- HAMBURG PANEL                                              -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="panel-hamburg" class="panel">
+<div class="section">
+
+  <div class="city-banner">
+    <div class="city-banner-name ham-color">Hamburg</div>
+    <div class="city-banner-sub">Germany · 16–18 April 2027<br>HSV Bundesliga · Reeperbahn · Elbe</div>
+  </div>
+
+  <div class="facts" style="margin-bottom:20px;">
+    <div class="fact"><div class="fact-label">Travel</div><div class="fact-val"><strong>~1h 30min</strong> flight <em>or</em><br><strong>4h 30min</strong> direct train</div></div>
+    <div class="fact"><div class="fact-label">Football</div><div class="fact-val">HSV, Volksparkstadion (~57k)<br><strong>€20–60</strong> per ticket</div></div>
+    <div class="fact"><div class="fact-label">Accommodation</div><div class="fact-val">Large apt, St. Pauli<br><strong>€400–800/night total</strong></div></div>
+    <div class="fact"><div class="fact-label">Budget</div><div class="fact-val">All-in estimate<br><strong>€375–690 / person</strong></div></div>
+  </div>
+
+  <div class="alert alert-ham">
+    <span class="alert-icon">⚠️</span>
+    <span>Bundesliga 2026–27 schedule releases June/July 2026. Check <strong>hsv.de</strong> immediately — Bundesliga home tickets sell out fast. Buy the moment fixtures are confirmed.</span>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">01</div>
+      <div class="day-info-text">
+        <div class="day-date">Friday · 16 April</div>
+        <h3>Arrival — Harbour City Welcome</h3>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">07:00<br>–<br>12:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🚆✈️</span> Travel — Flight or Train from Copenhagen</div>
+          <div class="event-desc"><strong>Train (recommended):</strong> EuroCity Express departs ~07:22, arrives Hamburg Hbf ~12:00. City-to-city, comfortable, no airport faff.<br><strong>Flight:</strong> ~1h 30min, then S-Bahn to centre (~25 min).</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">12:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🏠</span> Check In — Group Apartment, St. Pauli</div>
+          <div class="event-desc">Large flat near the Reeperbahn. Walking distance to harbour, nightlife, and Fischmarkt. Drop bags and explore the neighbourhood.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">14:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🚲</span> Beer Bike Tour <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Pedal-powered mobile bar cycling through Hamburg while everyone drinks. 1.5–2 hrs, turns heads, creates instant memories. <strong>~€25–35/person.</strong> Book in advance.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">17:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🌊</span> St. Pauli Piers — Harbour Walk</div>
+          <div class="event-desc">Stroll the iconic waterfront. Try a Krabbenbröttchen (Hamburg's famous shrimp sandwich) from a harbour stall. Free. Spectacular views of one of Europe's biggest ports.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">19:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🍺</span> Group Dinner — German Beer Hall</div>
+          <div class="event-desc">Traditional Hamburg Brauhaus — big shared tables, steins of Astra (Hamburg's local beer), schnitzel and bratwurst. <strong>~€25–35/person</strong> with drinks.</div>
+        </div>
+      </div>
+      <div class="event ev-night">
+        <div class="event-time">21:30+</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🎰</span> Reeperbahn Night Out <span class="badge badge-night">Night</span></div>
+          <div class="event-desc">Hamburg's legendary nightlife strip. Start at Molotow (rock bar), move to Docks or Gruenspan. Hundreds of venues, goes all night.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">02</div>
+      <div class="day-info-text">
+        <div class="day-date">Saturday · 17 April</div>
+        <h3>Activities Day + HSV Match</h3>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">10:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🍳</span> Big Group Breakfast</div>
+          <div class="event-desc">Hamburg's brunch culture is excellent. Cafés in Schanzenviertel (north of St. Pauli) are great. <strong>~€10–15/person.</strong></div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">12:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🏎️</span> Outdoor Go-Karting <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Full-size outdoor kart track, timed sessions and championship format. <strong>~€30–45/person.</strong> Book ahead.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">14:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">⚽</span> 5-a-Side Football <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">You're a football team — play some! Book a pitch for 1 hour, split into two sides. Warm-up for the real match tonight. <strong>~€10–20/person.</strong></div>
+        </div>
+      </div>
+      <div class="event ev-match-h">
+        <div class="event-time">15:30<br>pre-match<br>~18:00 ko</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">⚽</span> HSV — Bundesliga Home Match, Volksparkstadion <span class="badge badge-matchh">Match</span></div>
+          <div class="event-desc">~57,000 capacity Bundesliga atmosphere. Pre-match Astra beers near the stadium are essential. Tickets <strong>€20–60</strong> — buy immediately at hsv.de when 2026–27 fixtures drop. S-Bahn S21 direct to stadium.</div>
+        </div>
+      </div>
+      <div class="event ev-night">
+        <div class="event-time">21:00+</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🌃</span> Post-Match — Sternschanze & Reeperbahn <span class="badge badge-night">Night</span></div>
+          <div class="event-desc">Start in Sternschanze (craft beer bars, relaxed vibe) for the post-match debrief, then back to the Reeperbahn for a full night.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-block">
+    <div class="day-header">
+      <div class="day-num">03</div>
+      <div class="day-info-text">
+        <div class="day-date">Sunday · 18 April</div>
+        <h3>Fischmarkt + Elbe Cruise + Departure</h3>
+      </div>
+    </div>
+    <div class="events">
+      <div class="event">
+        <div class="event-time">09:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🦐</span> Fischmarkt Breakfast</div>
+          <div class="event-desc">Hamburg's legendary Sunday morning fish market — runs 5am–9:30am on the Elbe waterfront. Fresh fish, bread, fruit, and cold Astra beer at 9am. A Hamburg institution. Do not miss this.</div>
+        </div>
+      </div>
+      <div class="event ev-active">
+        <div class="event-time">12:00</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🛥️</span> Elbe Harbour Boat Party <span class="badge badge-active">Active</span></div>
+          <div class="event-desc">Private group cruise on the Elbe — DJ, bar on board, views of the port and Elbphilharmonie. Hamburg's harbour is spectacular from the water. <strong>~€30–50/person.</strong></div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">14:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🎵</span> Elbphilharmonie Plaza (Free)</div>
+          <div class="event-desc">Walk up to the public viewing plaza — free entry, extraordinary 360° harbour views. 20 minutes, stunning architecture.</div>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-time">16:30</div>
+        <div class="event-body">
+          <div class="event-title"><span class="event-emoji">🚆✈️</span> Head Home</div>
+          <div class="event-desc"><strong>Train:</strong> EuroCity Express ~17:00 from Hamburg Hbf → Copenhagen ~21:30.<br><strong>Flight:</strong> Multiple evening departures from Hamburg Airport (HAM).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-title">Practical Tips</div>
+  <div class="tips">
+    <div class="tip"><h4>🏠 Accommodation</h4><p>St. Pauli or Altona. Large apt on Airbnb for 10+ guests. €400–800/night total. Book 6–9 months ahead.</p></div>
+    <div class="tip"><h4>🚆 Train Option</h4><p>EuroCity Express is a great group experience. City-to-city, no airport hassle. Depart ~07:22, arrive ~12:00.</p></div>
+    <div class="tip"><h4>🎟️ HSV Tickets</h4><p>Buy the moment 2026–27 fixtures drop at hsv.de. Bundesliga games sell out quickly.</p></div>
+    <div class="tip"><h4>🍺 Local Beer</h4><p>Astra is Hamburg's local brew — order it everywhere near the stadium and Reeperbahn.</p></div>
+    <div class="tip"><h4>🚲 Beer Bike</h4><p>Book 4–6 weeks ahead minimum. Very popular with groups, can sell out on peak weekends.</p></div>
+    <div class="tip"><h4>📍 Location</h4><p>St. Pauli puts you 5 min walk from the Reeperbahn, harbour, and great restaurants.</p></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- BUDGET PANEL                                               -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<div id="panel-budget" class="panel">
+<div class="section">
+
+  <div class="sec-title">Budget Estimates — Per Person</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:24px;">Based on a group of 10 sharing accommodation. Prices in EUR. Flights booked ~3 months in advance.</p>
+
+  <!-- BUDAPEST BUDGET -->
+  <div style="margin-bottom:36px;">
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--bud);text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:14px;">🇭🇺 Budapest</h2>
+    <div class="budget-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Low</th>
+          <th>High</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>✈️ Return flight (CPH–BUD)</td><td>€80</td><td>€180</td><td class="td-note">Wizz Air / Ryanair / Norwegian</td></tr>
+        <tr><td>🏠 Accommodation (2 nights)</td><td>€60</td><td>€100</td><td class="td-note">Large apt District VII, split 10 ways</td></tr>
+        <tr><td>⚽ Match ticket</td><td>€10</td><td>€25</td><td class="td-note">Ferencváros NB I home game</td></tr>
+        <tr><td>🎯 Shooting range</td><td>€40</td><td>€70</td><td class="td-note">Group session incl. ammo packages</td></tr>
+        <tr><td>🏎️ Go-karting</td><td>€25</td><td>€40</td><td class="td-note">Private group session, grand prix format</td></tr>
+        <tr><td>💥 Paintball</td><td>€20</td><td>€35</td><td class="td-note">Incl. transport to site</td></tr>
+        <tr><td>🛥️ Danube boat cruise</td><td>€30</td><td>€50</td><td class="td-note">Open bar, ~1.5 hrs</td></tr>
+        <tr><td>🍖 Food (2 dinners + breakfasts)</td><td>€30</td><td>€55</td><td class="td-note">Hungarian grill + café breakfasts</td></tr>
+        <tr><td>🍺 Drinks / nightlife (2 nights)</td><td>€40</td><td>€80</td><td class="td-note">Ruin bars + clubs, very cheap</td></tr>
+        <tr><td>🚕 Local transport</td><td>€15</td><td>€25</td><td class="td-note">Bolt app + metro, very affordable</td></tr>
+        <tr class="total-row"><td><strong>TOTAL PER PERSON</strong></td><td class="bud-total"><strong>€350</strong></td><td class="bud-total"><strong>€660</strong></td><td class="td-note">All-inclusive estimate</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- HAMBURG BUDGET -->
+  <div style="margin-bottom:36px;">
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--ham);text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:14px;">🇩🇪 Hamburg</h2>
+    <div class="budget-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Low</th>
+          <th>High</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>🚆✈️ Return flight or train</td><td>€80</td><td>€160</td><td class="td-note">EuroCity Express train or direct flight</td></tr>
+        <tr><td>🏠 Accommodation (2 nights)</td><td>€100</td><td>€160</td><td class="td-note">Large apt St. Pauli, split 10 ways</td></tr>
+        <tr><td>⚽ HSV match ticket</td><td>€20</td><td>€60</td><td class="td-note">Bundesliga — varies by section</td></tr>
+        <tr><td>🚲 Beer bike tour</td><td>€25</td><td>€35</td><td class="td-note">1.5–2 hrs, beer included</td></tr>
+        <tr><td>🏎️ Outdoor go-karting</td><td>€30</td><td>€45</td><td class="td-note">Group session, timed heats</td></tr>
+        <tr><td>⚽ 5-a-side pitch hire</td><td>€10</td><td>€20</td><td class="td-note">1 hr pitch, split 10 ways</td></tr>
+        <tr><td>🛥️ Elbe boat cruise</td><td>€30</td><td>€50</td><td class="td-note">Party cruise with DJ + bar</td></tr>
+        <tr><td>🍺 Food (2 dinners + breakfasts)</td><td>€40</td><td>€70</td><td class="td-note">Beer hall + Fischmarkt + brunch</td></tr>
+        <tr><td>🎰 Drinks / nightlife (2 nights)</td><td>€50</td><td>€90</td><td class="td-note">Reeperbahn + Sternschanze</td></tr>
+        <tr><td>🚕 Local transport</td><td>€15</td><td>€25</td><td class="td-note">U-Bahn + taxis</td></tr>
+        <tr class="total-row"><td><strong>TOTAL PER PERSON</strong></td><td class="ham-total"><strong>€400</strong></td><td class="ham-total"><strong>€715</strong></td><td class="td-note">All-inclusive estimate</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <!-- BUDGET COMPARISON -->
+  <div class="sec-title">Budget Comparison</div>
+  <div class="verdict">
+    <h3 style="color:var(--green);">Budapest saves you ~€50–100 per person</h3>
+    <p>The biggest differences are <strong>accommodation</strong> (roughly half the price per person in Budapest) and <strong>food and drinks</strong> (Budapest is one of Europe's cheapest capitals — beer from €1.50, dinners €10–15). Activities are similarly priced in both cities.</p>
+    <p>For a group of 10, Budapest is roughly <strong>€500–1,000 cheaper in total</strong> compared to Hamburg — money that stays in your pockets for more drinks and activities.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  Football Team Weekend Trip · 16–18 April 2027 · Prices are estimates as of May 2026 · Fixtures to be confirmed summer 2026
+</footer>
+
+<script>
+  const panels = ['compare','budapest','hamburg','budget'];
+  const btnClasses = {
+    compare: 'active-cmp',
+    budapest: 'active-bud',
+    hamburg: 'active-ham',
+    budget: 'active-cmp'
+  };
+
+  function show(id) {
+    panels.forEach(p => {
+      document.getElementById('panel-' + p).classList.remove('active');
+    });
+    document.querySelectorAll('.nav-btn').forEach(b => {
+      b.classList.remove('active-cmp','active-bud','active-ham');
+    });
+    document.getElementById('panel-' + id).classList.add('active');
+    const btns = document.querySelectorAll('.nav-btn');
+    const idx = panels.indexOf(id);
+    if (btns[idx]) btns[idx].classList.add(btnClasses[id]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
