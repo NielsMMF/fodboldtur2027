@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Football Trip 2027</title>
+<title>Fodboldtur 2027 · Budapest</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
 /* ── RESET & BASE ─────────────────────────────────── */
@@ -19,7 +19,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── VARIABLES ────────────────────────────────────── */
+/* ── VARIABLER ────────────────────────────────────── */
 :root {
   --green:   #00d46a;
   --dark:    #0a0c0b;
@@ -64,16 +64,21 @@ body {
 .hero h1 {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 800;
-  font-size: clamp(40px, 9vw, 88px);
+  font-size: clamp(44px, 11vw, 96px);
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: -1px;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
+  color: var(--bud);
 }
-.hero h1 .city-a { color: var(--bud); }
-.hero h1 .city-b { color: var(--ham); }
-.hero h1 .city-c { color: var(--par); }
-.hero h1 .sep    { color: var(--muted); font-size: 0.4em; vertical-align: middle; padding: 0 6px; }
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 .hero-meta {
   display: flex;
   justify-content: center;
@@ -91,7 +96,7 @@ body {
 }
 .hero-pill strong { color: var(--text); font-weight: 500; }
 
-/* ── NAV TABS ─────────────────────────────────────── */
+/* ── NAV ──────────────────────────────────────────── */
 .nav {
   position: sticky;
   top: 0;
@@ -110,7 +115,7 @@ body {
   font-size: 15px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 16px 22px;
+  padding: 16px 20px;
   cursor: pointer;
   background: none;
   border: none;
@@ -122,17 +127,13 @@ body {
   top: 1px;
 }
 .nav-btn:hover { color: var(--text); }
-.nav-btn[data-city="compare"].active  { color: var(--green); border-bottom-color: var(--green); }
-.nav-btn[data-city="budapest"].active { color: var(--bud);   border-bottom-color: var(--bud); }
-.nav-btn[data-city="hamburg"].active  { color: var(--ham);   border-bottom-color: var(--ham); }
-.nav-btn[data-city="paris"].active    { color: var(--par);   border-bottom-color: var(--par); }
-.nav-btn[data-city="budget"].active   { color: var(--green); border-bottom-color: var(--green); }
+.nav-btn.active { color: var(--bud); border-bottom-color: var(--bud); }
 
-/* ── PANELS ───────────────────────────────────────── */
+/* ── PANELER ──────────────────────────────────────── */
 .panel { display: none; }
 .panel.active { display: block; }
 
-/* ── LOADING STATE ────────────────────────────────── */
+/* ── LOADING ──────────────────────────────────────── */
 .loading {
   text-align: center;
   padding: 80px 24px;
@@ -154,28 +155,10 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ── SHARED CONTENT STYLES ────────────────────────── */
+/* ── FÆLLES INDHOLD ───────────────────────────────── */
 .section { max-width: 820px; margin: 0 auto; padding: 40px 20px; }
 .section a { color: var(--green); text-decoration: underline; text-underline-offset: 2px; }
 .section a:hover { color: var(--text); }
-.option-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-.option-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-.option-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-.option-card-head h4 { font-size: 15px; font-weight: 600; }
-.option-card-head h4 a { color: var(--text); }
-.option-card-price { font-size: 12.5px; color: var(--green); font-weight: 500; white-space: nowrap; }
-.option-card-meta { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-.option-pros-cons { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; font-size: 12.5px; }
-.option-pros-cons .pros { color: #a8d8b8; }
-.option-pros-cons .cons { color: #e0a8a8; }
-.option-pros-cons > div > strong:first-child { display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; }
-.badge-beer     { background: rgba(240,165,0,0.15);  color: var(--bud); }
-.badge-cocktail { background: rgba(208,128,224,0.15); color: #d090e0; }
-.badge-games    { background: rgba(0,212,106,0.15);  color: var(--green); }
-.badge-sports   { background: rgba(110,168,216,0.15); color: var(--par); }
-.night-head { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); margin: 4px 0 12px; display: flex; align-items: center; gap: 10px; }
-.night-head span { font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--muted); }
-.option-pros-cons strong { font-weight: 600; }
 .sec-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
@@ -187,6 +170,7 @@ body {
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
+.lead { font-size: 13px; color: var(--muted); margin: -8px 0 20px; }
 .city-banner {
   display: flex;
   align-items: flex-end;
@@ -217,6 +201,7 @@ body {
 .alert-bud { background: rgba(240,165,0,0.08); border: 1px solid rgba(240,165,0,0.25); color: #e8c878; }
 .alert-ham { background: rgba(224,53,53,0.08);  border: 1px solid rgba(224,53,53,0.25);  color: #f09090; }
 .alert-par { background: rgba(110,168,216,0.08); border: 1px solid rgba(110,168,216,0.25); color: #a8ccec; }
+.alert-ok  { background: rgba(0,212,106,0.08);  border: 1px solid rgba(0,212,106,0.25);  color: #7fdca8; }
 .alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
 .facts {
   display: grid;
@@ -228,6 +213,42 @@ body {
 .fact-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .fact-val { font-size: 14px; font-weight: 500; line-height: 1.4; }
 .fact-val strong { color: var(--green); }
+
+/* ── OVERORDNET PROGRAM (forsiden) ────────────────── */
+.itin-day { margin-bottom: 30px; }
+.itin-day-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+.itin-day-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: var(--border); }
+.itin-day-text h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 19px; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+.itin-day-text .itin-date { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+.itin-row {
+  display: grid;
+  grid-template-columns: 66px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+button.itin-row { cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+button.itin-row:hover { border-color: var(--bud); border-left-color: var(--bud); background: #1e2420; }
+.itin-row.is-key { border-left-color: var(--bud); }
+.itin-time { font-size: 10.5px; font-weight: 600; letter-spacing: 0.5px; color: var(--muted); text-align: right; line-height: 1.3; }
+.itin-title { font-weight: 600; font-size: 14.5px; line-height: 1.25; }
+.itin-note { font-size: 12px; color: var(--muted); line-height: 1.4; margin-top: 2px; }
+.itin-more {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--bud); white-space: nowrap;
+}
+
+/* ── DAGSPROGRAM (detaljesider) ───────────────────── */
 .day-block { margin-bottom: 36px; }
 .day-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; }
 .day-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 56px; line-height: 1; color: var(--border); }
@@ -261,6 +282,28 @@ body {
 .badge-night   { background: rgba(128,96,208,0.15); color: #a080e8; }
 .event-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
 .event-desc strong { color: #b8c8bc; font-weight: 500; }
+
+/* ── VALGKORT ─────────────────────────────────────── */
+.option-cards { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.option-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+.option-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+.option-card-head h4 { font-size: 15px; font-weight: 600; }
+.option-card-head h4 a { color: var(--text); }
+.option-card-price { font-size: 12.5px; color: var(--green); font-weight: 500; white-space: nowrap; }
+.option-card-meta { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.option-pros-cons { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; font-size: 12.5px; }
+.option-pros-cons .pros { color: #a8d8b8; }
+.option-pros-cons .cons { color: #e0a8a8; }
+.option-pros-cons > div > strong:first-child { display: block; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; opacity: 0.8; }
+.option-pros-cons strong { font-weight: 600; }
+.badge-beer     { background: rgba(240,165,0,0.15);  color: var(--bud); }
+.badge-cocktail { background: rgba(208,128,224,0.15); color: #d090e0; }
+.badge-games    { background: rgba(0,212,106,0.15);  color: var(--green); }
+.badge-sports   { background: rgba(110,168,216,0.15); color: var(--par); }
+.night-head { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); margin: 4px 0 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.night-head span { font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--muted); }
+
+/* ── TIPS / TABELLER / VERDICT ────────────────────── */
 .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 4px; }
 .tip { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
 .tip h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
@@ -284,6 +327,15 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .ham-total { color: var(--ham); }
 .par-total { color: var(--par); }
 
+/* ── TILBAGE-LINK ─────────────────────────────────── */
+.back {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); background: none; border: none; cursor: pointer;
+  padding: 0; margin-bottom: 20px;
+}
+.back:hover { color: var(--bud); }
+
 /* ── FOOTER ───────────────────────────────────────── */
 footer {
   text-align: center;
@@ -293,12 +345,14 @@ footer {
   color: var(--muted);
 }
 
-/* ── MOBILE ───────────────────────────────────────── */
+/* ── MOBIL ────────────────────────────────────────── */
 @media (max-width: 520px) {
   .hero { padding: 44px 20px 36px; }
   .section { padding: 28px 16px; }
   .event { grid-template-columns: 52px 1fr; gap: 8px; padding: 12px 14px 12px 10px; }
   .day-num { font-size: 40px; }
+  .itin-row { grid-template-columns: 54px 1fr; row-gap: 4px; }
+  .itin-more { grid-column: 2; }
   th, td { padding: 8px 10px; font-size: 12.5px; }
 }
 </style>
@@ -306,65 +360,94 @@ footer {
 <body>
 
 <header class="hero">
-  <div class="hero-eyebrow">Football Weekend Trip · Planning Document</div>
-  <h1>
-    <span class="city-a">Budapest</span><span class="sep">·</span><span class="city-b">Hamburg</span><span class="sep">·</span><span class="city-c">Paris</span>
-  </h1>
+  <div class="hero-eyebrow">Fodboldtur · Planlægningsdokument</div>
+  <h1>Budapest</h1>
+  <div class="hero-sub">16.–18. april 2027</div>
   <div class="hero-meta">
-    <div class="hero-pill">🗓 <strong>16–18 April 2027</strong></div>
-    <div class="hero-pill">👥 <strong>7–12 people</strong></div>
-    <div class="hero-pill">⚽ <strong>Football + Activities + Nightlife</strong></div>
-    <div class="hero-pill">🏠 <strong>Group accommodation</strong></div>
+    <div class="hero-pill">🗓 <strong>Fredag til søndag</strong></div>
+    <div class="hero-pill">👥 <strong>7–12 personer</strong></div>
+    <div class="hero-pill">⚽ <strong>Ferencváros hjemmekamp</strong></div>
+    <div class="hero-pill">🏠 <strong>Fælles lejlighed</strong></div>
   </div>
 </header>
 
-<nav class="nav">
-  <button class="nav-btn active" data-city="compare"  onclick="show('compare')">⚖️ Compare</button>
-  <button class="nav-btn"        data-city="budapest" onclick="show('budapest')">🇭🇺 Budapest</button>
-  <button class="nav-btn"        data-city="hamburg"  onclick="show('hamburg')">🇩🇪 Hamburg</button>
-  <button class="nav-btn"        data-city="paris"    onclick="show('paris')">🇫🇷 Paris</button>
-  <button class="nav-btn"        data-city="budget"   onclick="show('budget')">💶 Budgets</button>
-</nav>
+<nav class="nav" id="nav"></nav>
 
-<div id="panel-compare"  class="panel active"><div class="loading">Loading</div></div>
-<div id="panel-budapest" class="panel"><div class="loading">Loading</div></div>
-<div id="panel-hamburg"  class="panel"><div class="loading">Loading</div></div>
-<div id="panel-paris"    class="panel"><div class="loading">Loading</div></div>
-<div id="panel-budget"   class="panel"><div class="loading">Loading</div></div>
+<div id="paneler"></div>
 
 <footer>
-  Football Team Weekend Trip · 16–18 April 2027 · Prices are estimates as of May 2026 · Fixtures to be confirmed summer 2026
+  Fodboldtur · Budapest · 16.–18. april 2027 · Priser er estimater · Kampprogrammet bekræftes sommeren 2026
 </footer>
 
 <script>
-  const loaded = {};
+/* ─────────────────────────────────────────────────────────────
+   SIDER
+   SYNLIG  = sider med en knap i menuen.
+   SKJULT  = sider der stadig ligger i repoet og stadig kan
+             hentes frem via adressen (fx index.html#hamborg),
+             men som ikke har en knap i menuen.
 
-  async function show(city) {
-    // Update nav
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.nav-btn[data-city="${city}"]`).classList.add('active');
+   SÅDAN GENSKABER DU EN SKJULT SIDE:
+   Flyt linjen fra SKJULT op i SYNLIG. Det er alt — menuen
+   bygges ud fra listen nedenfor, så knappen dukker op af sig
+   selv. Filerne er urørte og fungerer med det samme.
+   ───────────────────────────────────────────────────────────── */
+const SYNLIG = [
+  ['oversigt',  '📋 Oversigt'],
+  ['skydebane', '🎯 Skydebane'],
+  ['donau',     '🛥️ Donau'],
+  ['kamp',      '⚽ Kampen'],
+  ['barer',     '🍺 Barer'],
+  ['budget',    '💶 Budget'],
+];
 
-    // Update panels
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    const panel = document.getElementById('panel-' + city);
-    panel.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const SKJULT = [
+  ['hamborg',    '🇩🇪 Hamborg'],     // fravalgt by — index.html#hamborg
+  ['paris',      '🇫🇷 Paris'],       // fravalgt by — index.html#paris
+  ['sammenlign', '⚖️ Sammenligning'], // byvalg + budgetter for alle tre — index.html#sammenlign
+];
 
-    // Fetch content if not yet loaded
-    if (!loaded[city]) {
-      try {
-        const res = await fetch(`${city}.html`);
-        if (!res.ok) throw new Error(res.status);
-        panel.innerHTML = await res.text();
-        loaded[city] = true;
-      } catch(e) {
-        panel.innerHTML = `<div class="section" style="color:var(--muted);padding-top:60px;text-align:center;">Could not load ${city}.html — make sure all files are in the same folder.</div>`;
-      }
+const ALLE = [...SYNLIG, ...SKJULT];
+const hentet = {};
+
+/* Byg menuen ud fra SYNLIG */
+document.getElementById('nav').innerHTML = SYNLIG.map(([id, navn]) =>
+  `<button class="nav-btn" data-side="${id}" onclick="vis('${id}')">${navn}</button>`
+).join('');
+
+/* Byg et panel til hver side — også de skjulte, så de kan hentes via # */
+document.getElementById('paneler').innerHTML = ALLE.map(([id]) =>
+  `<div id="panel-${id}" class="panel"><div class="loading">Henter</div></div>`
+).join('');
+
+async function vis(side, skrivHash = true) {
+  if (!ALLE.some(([id]) => id === side)) side = 'oversigt';
+
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const knap = document.querySelector(`.nav-btn[data-side="${side}"]`);
+  if (knap) knap.classList.add('active');
+
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + side);
+  panel.classList.add('active');
+
+  if (skrivHash) history.replaceState(null, '', '#' + side);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (!hentet[side]) {
+    try {
+      const svar = await fetch(`${side}.html`);
+      if (!svar.ok) throw new Error(svar.status);
+      panel.innerHTML = await svar.text();
+      hentet[side] = true;
+    } catch (e) {
+      panel.innerHTML = `<div class="section" style="color:var(--muted);padding-top:60px;text-align:center;">Kunne ikke hente ${side}.html — tjek at alle filer ligger i samme mappe.</div>`;
     }
   }
+}
 
-  // Load compare panel on startup
-  show('compare');
+vis(location.hash.replace('#', '') || 'oversigt', false);
+window.addEventListener('hashchange', () => vis(location.hash.replace('#', '') || 'oversigt', false));
 </script>
 </body>
 </html>

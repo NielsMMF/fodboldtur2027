@@ -1,167 +1,174 @@
 <div class="section">
 
+  <button class="back" onclick="vis('oversigt')">← Tilbage til oversigt</button>
+
+  <div class="alert alert-ok">
+    <span class="alert-icon">📁</span>
+    <span><strong>Arkiveret — fravalgt by.</strong> Budapest blev valgt, så denne side er taget ud af menuen. Planen er bevaret i sin helhed, hvis beslutningen skal genbesøges. Se også <a href="#sammenlign" onclick="vis('sammenlign')">sammenligningen</a>.</span>
+  </div>
+
   <div class="city-banner">
     <div class="city-banner-name par-color">Paris</div>
-    <div class="city-banner-sub">France · 16–18 April 2027<br>PSG · Pigalle · Seine</div>
+    <div class="city-banner-sub">Frankrig · 16.–18. april 2027<br>PSG · Pigalle · Seinen</div>
   </div>
 
   <div class="facts">
-    <div class="fact"><div class="fact-label">Flight</div><div class="fact-val">~2h 15min direct CPH→CDG<br><strong>750–1.500 kr</strong> return, estimate only</div></div>
-    <div class="fact"><div class="fact-label">Football</div><div class="fact-val">PSG, Parc des Princes (~48k)<br><strong>225–600 kr</strong> per ticket</div></div>
-    <div class="fact"><div class="fact-label">Accommodation</div><div class="fact-val">Large apt, Montmartre / Le Marais<br><strong>3.750–6.750 kr/night total</strong></div></div>
-    <div class="fact"><div class="fact-label">Budget</div><div class="fact-val">All-in incl. 15% contingency<br><strong>3.850–7.000 kr / person</strong></div></div>
+    <div class="fact"><div class="fact-label">Fly</div><div class="fact-val">~2t 15min direkte CPH→CDG<br><strong>750–1.500 kr</strong> t/r, kun estimat</div></div>
+    <div class="fact"><div class="fact-label">Fodbold</div><div class="fact-val">PSG, Parc des Princes (~48.000)<br><strong>225–600 kr</strong> pr. billet</div></div>
+    <div class="fact"><div class="fact-label">Indkvartering</div><div class="fact-val">Stor lejlighed, Montmartre / Le Marais<br><strong>3.750–6.750 kr</strong> pr. nat i alt</div></div>
+    <div class="fact"><div class="fact-label">Budget</div><div class="fact-val">Alt inkl. 15 % buffer<br><strong>3.850–7.000 kr</strong> pr. person</div></div>
   </div>
 
   <div class="alert alert-par">
     <span class="alert-icon">⚠️</span>
-    <span>Ligue 1 2026–27 schedule releases summer 2026. PSG home tickets sell out fast — check <strong>psg.fr</strong> the moment fixtures drop. April is typically a busy period in the title race.</span>
+    <span>Ligue 1-programmet for 2026/27 offentliggøres sommeren 2026. Billetter til PSG's hjemmekampe bliver hurtigt udsolgt — tjek <strong>psg.fr</strong> i samme øjeblik kampene er ude. April ligger typisk midt i mesterskabskampen.</span>
   </div>
 
-  <!-- DAY 1 -->
+  <!-- DAG 1 -->
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">01</div>
       <div class="day-info-text">
-        <div class="day-date">Friday · 16 April</div>
-        <h3>Arrival — Montmartre & Pigalle</h3>
+        <div class="day-date">Fredag · 16. april</div>
+        <h3>Ankomst — Montmartre og Pigalle</h3>
       </div>
     </div>
     <div class="events">
       <div class="event">
         <div class="event-time">07:00<br>–<br>10:00</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">✈️</span> Fly CPH → CDG (Paris Charles de Gaulle)</div>
-          <div class="event-desc">~2h 15min direct. Aim for a 07:00–08:00 departure. Budget <strong>750–1.500 kr per person return</strong> — desk estimate, not yet price-checked. From CDG take the RER B direct to central Paris (~45 min, 90 kr). Or taxi ~450 kr flat rate to the city.</div>
+          <div class="event-title"><span class="event-emoji">✈️</span> Fly København → Paris (CDG)</div>
+          <div class="event-desc">~2t 15min direkte. Sigt efter afgang mellem 07 og 08. Regn med <strong>750–1.500 kr pr. person t/r</strong> — skrivebordsestimat, ikke prischecket. Fra CDG kører RER B direkte ind til centrum (~45 min, 90 kr), eller tag en taxa til fast pris omkring 450 kr.</div>
         </div>
       </div>
       <div class="event">
         <div class="event-time">~11:30</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🏠</span> Check In — Group Apartment, Montmartre or Le Marais</div>
-          <div class="event-desc">Large 4–5 bedroom apartment in Montmartre (18th) for the Pigalle nightlife strip on the doorstep, or Le Marais (3rd/4th) for a more central base. Search Airbnb for "Paris apartment 10 guests". Drop bags, grab a café.</div>
+          <div class="event-title"><span class="event-emoji">🏠</span> Indkvartering — Montmartre eller Le Marais</div>
+          <div class="event-desc">Stor lejlighed med 4–5 soveværelser i Montmartre (18. arr.), hvis nattelivet i Pigalle skal ligge lige uden for døren, eller i Le Marais (3./4. arr.) for en mere central base. Søg på Airbnb efter "Paris apartment 10 guests". Aflever bagagen og tag en kop kaffe.</div>
         </div>
       </div>
       <div class="event ev-active">
         <div class="event-time">13:30</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🏎️</span> Go-Karting — Racing Kart de Paris <span class="badge badge-active">Active</span></div>
-          <div class="event-desc">Paris has excellent indoor karting facilities with professional tracks and timed grand prix sessions. Great competitive opener for the group. <strong>~260–375 kr/person.</strong> Book ahead for groups.</div>
+          <div class="event-title"><span class="event-emoji">🏎️</span> Gokart — Racing Kart de Paris <span class="badge badge-active">Aktivitet</span></div>
+          <div class="event-desc">Paris har udmærkede indendørs kartbaner med professionelle anlæg og grandprix-format med tidtagning. En god konkurrence at åbne turen med. <strong>~260–375 kr pr. person.</strong> Skal bookes i forvejen for grupper.</div>
         </div>
       </div>
       <div class="event">
         <div class="event-time">17:00</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🗼</span> Aperitivo — Sacré-Cœur Steps</div>
-          <div class="event-desc">Grab wine and beer from a nearby shop and head up to the steps below Sacré-Cœur in Montmartre for sunset views over Paris. A Parisian institution — groups do this constantly. Free and unforgettable.</div>
+          <div class="event-title"><span class="event-emoji">🗼</span> Aperitif på trapperne ved Sacré-Cœur</div>
+          <div class="event-desc">Køb vin og øl i en butik i nærheden og gå op på trapperne neden for Sacré-Cœur i Montmartre til solnedgang over Paris. En parisisk institution — grupper gør det konstant. Gratis og uforglemmeligt.</div>
         </div>
       </div>
       <div class="event">
         <div class="event-time">19:30</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🍷</span> Group Dinner — Montmartre Bistro</div>
-          <div class="event-desc">Book a long table at a classic Parisian bistro in Montmartre. Steak frites, duck confit, carafe wine. Paris restaurants are pricier but the quality is exceptional. <strong>~260–410 kr/person</strong> with wine.</div>
+          <div class="event-title"><span class="event-emoji">🍷</span> Fælles middag — bistro i Montmartre</div>
+          <div class="event-desc">Book et langbord på en klassisk parisisk bistro i Montmartre. Steak frites, confit de canard og vin i karaffel. Restauranterne er dyrere end i Budapest, men kvaliteten er en anden. <strong>~260–410 kr pr. person</strong> inkl. vin.</div>
         </div>
       </div>
       <div class="event ev-night">
         <div class="event-time">21:30+</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🎭</span> Pigalle Night Out <span class="badge badge-night">Night</span></div>
-          <div class="event-desc">Pigalle (aka "Pig-Alle") is Paris's legendary nightlife district — bars, clubs, and the Moulin Rouge all on one stretch. Start with cocktails at a bar on Rue de Douai, then into La Cigale or Le Divan du Monde. Lively until 5am.</div>
+          <div class="event-title"><span class="event-emoji">🎭</span> Aften i Pigalle <span class="badge badge-night">Aften</span></div>
+          <div class="event-desc">Pigalle er Paris' legendariske natteliv — barer, klubber og Moulin Rouge på samme strækning. Start med cocktails på en bar i Rue de Douai og fortsæt til La Cigale eller Le Divan du Monde. Der er liv til klokken fem.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 2 -->
+  <!-- DAG 2 -->
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">02</div>
       <div class="day-info-text">
-        <div class="day-date">Saturday · 17 April</div>
-        <h3>Seine Cruise + PSG Match Night</h3>
+        <div class="day-date">Lørdag · 17. april</div>
+        <h3>Seine-cruise og PSG-kamp</h3>
       </div>
     </div>
     <div class="events">
       <div class="event">
         <div class="event-time">10:00</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">☕</span> Late Breakfast at the Apartment</div>
-          <div class="event-desc">Grab fresh croissants and pain au chocolat from the local boulangerie — there will be one within 100 metres. Strong café au lait. Recover and plan.</div>
+          <div class="event-title"><span class="event-emoji">☕</span> Sen morgenmad i lejligheden</div>
+          <div class="event-desc">Hent friske croissanter og pain au chocolat hos det lokale bageri — der ligger et inden for 100 meter. Stærk café au lait. Kom til hægterne og læg planen.</div>
         </div>
       </div>
       <div class="event ev-active">
         <div class="event-time">13:00</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🛥️</span> Seine Party Cruise <span class="badge badge-active">Active</span></div>
-          <div class="event-desc">Private or semi-private group boat cruise on the Seine — passing the Eiffel Tower, Notre-Dame, and Musée d'Orsay from the water. Options with an open bar and DJ available. <strong>~300–490 kr/person.</strong> Book ahead for groups of 7–12.</div>
+          <div class="event-title"><span class="event-emoji">🛥️</span> Seine-cruise <span class="badge badge-active">Aktivitet</span></div>
+          <div class="event-desc">Privat eller halvprivat sejltur på Seinen forbi Eiffeltårnet, Notre-Dame og Musée d'Orsay set fra vandet. Der findes muligheder med fri bar og DJ. <strong>~300–490 kr pr. person.</strong> Skal bookes i forvejen for 7–12 personer.</div>
         </div>
       </div>
       <div class="event">
         <div class="event-time">15:30</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🍺</span> Pre-Match Drinks — Parc des Princes Area</div>
-          <div class="event-desc">The Parc des Princes is in the 16th arrondissement. The bars around Exelmans and Michel-Ange–Molitor metro stations fill with PSG supporters before home games. Join the pre-match atmosphere.</div>
+          <div class="event-title"><span class="event-emoji">🍺</span> Optakt omkring Parc des Princes</div>
+          <div class="event-desc">Parc des Princes ligger i 16. arrondissement. Barerne omkring metrostationerne Exelmans og Michel-Ange–Molitor fyldes med PSG-fans før hjemmekampe. Tag del i stemningen inden kampen.</div>
         </div>
       </div>
       <div class="event ev-match-p">
-        <div class="event-time">~18:00<br>kick-off</div>
+        <div class="event-time">~18:00<br>kampstart</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">⚽</span> PSG Home Match — Parc des Princes <span class="badge badge-match-p">Match</span></div>
-          <div class="event-desc">~48,000 capacity in one of Europe's most atmospheric club stadiums. PSG's Ligue 1 fixtures in April are typically high-stakes title-race games. Tickets <strong>225–600 kr</strong> — book immediately at psg.fr when fixtures drop (summer 2026). Metro line 9 to Exelmans or line 10 to Michel-Ange–Molitor.</div>
+          <div class="event-title"><span class="event-emoji">⚽</span> PSG hjemmekamp — Parc des Princes <span class="badge badge-match-p">Kamp</span></div>
+          <div class="event-desc">~48.000 pladser på et af Europas mest stemningsfulde klubstadioner. PSG's kampe i april ligger typisk midt i mesterskabsafgørelsen. Billetter <strong>225–600 kr</strong> — køb straks på psg.fr, når programmet kommer (sommeren 2026). Metro linje 9 til Exelmans eller linje 10 til Michel-Ange–Molitor.</div>
         </div>
       </div>
       <div class="event ev-night">
         <div class="event-time">21:00+</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🌃</span> Post-Match — Oberkampf or Le Marais <span class="badge badge-night">Night</span></div>
-          <div class="event-desc">Post-match beers near the stadium, then head east to <strong>Oberkampf</strong> (Paris's best bar-hopping street, unpretentious, great for groups) or <strong>Le Marais</strong> for a mix of cocktail bars and clubs. Both go until 5–6am.</div>
+          <div class="event-title"><span class="event-emoji">🌃</span> Efter kampen — Oberkampf eller Le Marais <span class="badge badge-night">Aften</span></div>
+          <div class="event-desc">Øl i nærheden af stadion først, og derefter mod øst til <strong>Oberkampf</strong> (Paris' bedste barstrøg, uprætentiøst og godt til grupper) eller <strong>Le Marais</strong> med en blanding af cocktailbarer og klubber. Begge steder er der åbent til klokken fem-seks.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- DAY 3 -->
+  <!-- DAG 3 -->
   <div class="day-block">
     <div class="day-header">
       <div class="day-num">03</div>
       <div class="day-info-text">
-        <div class="day-date">Sunday · 18 April</div>
-        <h3>Canal Saint-Martin + Departure</h3>
+        <div class="day-date">Søndag · 18. april</div>
+        <h3>Canal Saint-Martin og hjemrejse</h3>
       </div>
     </div>
     <div class="events">
       <div class="event">
         <div class="event-time">10:30</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">☕</span> Recovery Brunch — Canal Saint-Martin</div>
-          <div class="event-desc">The Canal Saint-Martin neighbourhood (10th arr.) is Paris's coolest Sunday brunch spot. Lined with cafés, brunch spots, and locals reading the paper by the water. <strong>~110–190 kr/person.</strong></div>
+          <div class="event-title"><span class="event-emoji">☕</span> Brunch ved Canal Saint-Martin</div>
+          <div class="event-desc">Kvarteret omkring Canal Saint-Martin (10. arr.) er Paris' bedste sted til søndagsbrunch. Caféer hele vejen langs kanalen og lokale, der læser avis ved vandet. <strong>~110–190 kr pr. person.</strong></div>
         </div>
       </div>
       <div class="event">
         <div class="event-time">13:00</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">🚶</span> Canal Walk + Final Drinks</div>
-          <div class="event-desc">Walk along the canal, pick up a few final beers from a shop and enjoy them by the waterside — perfectly Parisian. Then back for bags.</div>
+          <div class="event-title"><span class="event-emoji">🚶</span> Tur langs kanalen og sidste omgang</div>
+          <div class="event-desc">Gå langs kanalen, køb et par sidste øl i en butik og drik dem ved vandet — så parisisk som det bliver. Derefter tilbage efter bagagen.</div>
         </div>
       </div>
       <div class="event">
         <div class="event-time">16:00</div>
         <div class="event-body">
-          <div class="event-title"><span class="event-emoji">✈️</span> Head to Airport — Fly Home CDG → CPH</div>
-          <div class="event-desc">RER B from central Paris to CDG takes ~45 min. Allow plenty of time — CDG is a large airport. Multiple evening flights back to Copenhagen (Air France, SAS, Norwegian, easyJet).</div>
+          <div class="event-title"><span class="event-emoji">✈️</span> Afgang til lufthavnen — Paris → København</div>
+          <div class="event-desc">RER B fra centrum til CDG tager ~45 min. Beregn god tid — CDG er en stor lufthavn. Flere aftenafgange til København (Air France, SAS, Norwegian, easyJet).</div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="sec-title">Practical Tips</div>
+  <div class="sec-title">Praktisk info</div>
   <div class="tips">
-    <div class="tip"><h4>🏠 Accommodation</h4><p>Montmartre for Pigalle nightlife access; Le Marais for central location. 4–5 bed on Airbnb. 3.750–6.750 kr/night total. Book early — Paris fills fast.</p></div>
-    <div class="tip"><h4>🚇 Transport</h4><p>Metro is excellent and cheap (~15 kr/ride). Get a carnet of 10 tickets. Avoid taxis at rush hour — metro is faster.</p></div>
-    <div class="tip"><h4>⚽ PSG Tickets</h4><p>Buy immediately at psg.fr when fixtures drop (summer 2026). High-demand games sell out in hours.</p></div>
-    <div class="tip"><h4>💶 Budget</h4><p>Paris is pricier than Budapest or Hamburg. Budget 110–150 kr for dinner mains, 60–90 kr for cocktails. Worth it.</p></div>
-    <div class="tip"><h4>✈️ Airport</h4><p>CDG is large — arrive 2.5 hrs before departure. RER B to CDG: ~90 kr, ~45 min from central Paris.</p></div>
-    <div class="tip"><h4>🥐 Boulangerie</h4><p>Find your nearest bakery on Day 1. Fresh croissants each morning — non-negotiable in Paris.</p></div>
+    <div class="tip"><h4>🏠 Indkvartering</h4><p>Montmartre for at være tæt på Pigalle, Le Marais for central beliggenhed. 4–5 soveværelser på Airbnb, 3.750–6.750 kr pr. nat i alt. Book tidligt — Paris fyldes hurtigt.</p></div>
+    <div class="tip"><h4>🚇 Transport</h4><p>Metroen er fremragende og billig (~15 kr pr. tur). Køb et klippekort med 10 ture. Undgå taxa i myldretiden — metroen er hurtigere.</p></div>
+    <div class="tip"><h4>⚽ PSG-billetter</h4><p>Køb straks på psg.fr, når programmet kommer (sommeren 2026). De mest efterspurgte kampe er udsolgt på få timer.</p></div>
+    <div class="tip"><h4>💶 Budget</h4><p>Paris er dyrere end både Budapest og Hamborg. Regn med 110–150 kr for en hovedret og 60–90 kr for en cocktail. Det er pengene værd.</p></div>
+    <div class="tip"><h4>✈️ Lufthavn</h4><p>CDG er stor — vær der 2,5 time før afgang. RER B til CDG koster ~90 kr og tager ~45 min fra centrum.</p></div>
+    <div class="tip"><h4>🥐 Bageriet</h4><p>Find det nærmeste bageri allerede dag 1. Friske croissanter hver morgen er ikke til forhandling i Paris.</p></div>
   </div>
 
 </div>
