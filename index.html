@@ -303,6 +303,54 @@ button.itin-row:hover { border-color: var(--bud); border-left-color: var(--bud);
 .night-head { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; color: var(--text); margin: 4px 0 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .night-head span { font-family: 'Barlow', sans-serif; font-weight: 400; font-size: 12px; letter-spacing: 0; text-transform: none; color: var(--muted); }
 
+/* ── BETALINGSPLAN ────────────────────────────────── */
+.pay-steps { margin-bottom: 20px; }
+.pay-step {
+  display: grid;
+  grid-template-columns: 132px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--bud);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 10px;
+}
+.pay-step.pay-done { border-left-color: var(--green); }
+.pay-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 16px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--bud); line-height: 1.15;
+}
+.pay-date small { display: block; font-size: 11px; letter-spacing: 1.5px; color: var(--muted); font-weight: 600; }
+.pay-what h4 { font-size: 14.5px; font-weight: 600; margin-bottom: 3px; }
+.pay-what p { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.pay-amount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 30px; line-height: 1;
+  color: var(--green); white-space: nowrap;
+}
+.pay-total {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  border-top: 2px solid var(--border);
+  padding: 16px 22px 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 15px; letter-spacing: 2px; text-transform: uppercase;
+}
+.pay-total .pay-amount { font-size: 34px; color: var(--bud); }
+.paybox {
+  background: var(--card); border: 1px dashed var(--bud); border-radius: 10px;
+  padding: 20px 22px; margin-bottom: 20px;
+}
+.paybox-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.paybox-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: clamp(22px, 5vw, 32px); letter-spacing: 1px;
+  color: var(--bud); line-height: 1.2; word-break: break-word;
+}
+.paybox-note { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
 /* ── TIPS / TABELLER / VERDICT ────────────────────── */
 .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 4px; }
 .tip { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
@@ -394,11 +442,14 @@ footer {
    ───────────────────────────────────────────────────────────── */
 const SYNLIG = [
   ['oversigt',  '📋 Oversigt'],
+  ['praktisk',  '⚠️ Vigtig info'],
   ['skydebane', '🎯 Skydebane'],
   ['donau',     '🛥️ Donau'],
   ['kamp',      '⚽ Kampen'],
   ['barer',     '🍺 Barer'],
+  ['alternativer', '🔄 Alternativer'],
   ['budget',    '💶 Budget'],
+  ['rejsebureau', '🧳 Rejsebureau'],
 ];
 
 const SKJULT = [
