@@ -1,102 +1,51 @@
 <div class="section">
 
-  <div class="sec-title">Budget Estimates — Per Person</div>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:28px;">Based on a group of 10 sharing accommodation. <strong>All prices in DKK</strong>, converted at 7.5 DKK/EUR and rounded to the nearest 5 kr. Every city total includes a <strong>15% contingency</strong> on top of the itemised subtotal, rounded up to the nearest 50 kr.</p>
+  <button class="back" onclick="vis('oversigt')">← Tilbage til oversigt</button>
+
+  <div class="city-banner">
+    <div class="city-banner-name bud-color">Budget</div>
+    <div class="city-banner-sub">Pr. person · gruppe på 10<br>Alle beløb i kroner</div>
+  </div>
+
+  <p class="lead">Beregnet for en gruppe på 10, der deler lejlighed. Beløb omregnet fra euro med kurs <strong>7,5</strong> og rundet til nærmeste 5 kr. Totalen indeholder en <strong>buffer på 15 %</strong> oven på delsummen og er rundet op til nærmeste 50 kr.</p>
 
   <div class="alert alert-bud">
     <span class="alert-icon">✈️</span>
-    <span><strong>Flight prices.</strong> The Budapest figure below (<strong>900–1,500 kr</strong>) comes from actually searching fares. April 2027 is far enough out that no cheap tickets are loaded yet, so this range is taken from equivalent earlier dates — treat it as the realistic band once the schedule opens. The Hamburg and Paris flight rows are still converted desk estimates and have <em>not</em> been price-checked the same way.</span>
+    <span><strong>Om flyprisen.</strong> De <strong>900–1.500 kr</strong> nedenfor stammer fra faktiske søgninger. April 2027 ligger så langt ude i fremtiden, at der endnu ikke er lagt billige billetter ud, så beløbet er taget fra tilsvarende datoer tidligere på året. Betragt det som det realistiske spænd, når salget åbner.</span>
   </div>
 
-  <!-- BUDAPEST -->
-  <div style="margin-bottom:40px;">
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--bud);text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:14px;">🇭🇺 Budapest</h2>
-    <div class="budget-wrap">
-    <table>
-      <thead><tr><th>Category</th><th>Low</th><th>High</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>✈️ Return flight (CPH–BUD)</td><td>900 kr</td><td>1.500 kr</td><td class="td-note"><strong>Price-checked</strong> — Wizz Air / Ryanair / Norwegian</td></tr>
-        <tr><td>🏠 Accommodation (2 nights)</td><td>450 kr</td><td>750 kr</td><td class="td-note">Large apt District VII, split 10 ways</td></tr>
-        <tr><td>⚽ Match ticket</td><td>75 kr</td><td>190 kr</td><td class="td-note">Ferencváros NB I home game</td></tr>
-        <tr><td>🎯 Shooting range</td><td>375 kr</td><td>675 kr</td><td class="td-note">Hardcore/Capital taste-off → Churchill package</td></tr>
-        <tr><td>🛥️ Danube boat cruise (Sat)</td><td>285 kr</td><td>480 kr</td><td class="td-note">Private charter ~3.375 kr/boat split 10 ways; drinks extra</td></tr>
-        <tr><td>🍖 Food (2 dinners + breakfasts)</td><td>225 kr</td><td>410 kr</td><td class="td-note">Hungarian grill + café breakfasts</td></tr>
-        <tr><td>🍺 Drinks / nightlife (2 nights)</td><td>300 kr</td><td>600 kr</td><td class="td-note">Ruin bars + clubs, very cheap</td></tr>
-        <tr><td>🚕 Local transport</td><td>110 kr</td><td>190 kr</td><td class="td-note">Bolt app + metro, very affordable</td></tr>
-        <tr class="total-row"><td>Subtotal</td><td>2.720 kr</td><td>4.795 kr</td><td class="td-note">Sum of the rows above</td></tr>
-        <tr><td>🛟 Contingency (15%)</td><td>408 kr</td><td>719 kr</td><td class="td-note">Buffer for price drift, extra rounds, taxis</td></tr>
-        <tr class="total-row"><td><strong>TOTAL PER PERSON</strong></td><td class="bud-total"><strong>3.150 kr</strong></td><td class="bud-total"><strong>5.550 kr</strong></td><td class="td-note">Incl. contingency, rounded up to nearest 50 kr</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <!-- HAMBURG -->
-  <div style="margin-bottom:40px;">
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--ham);text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:14px;">🇩🇪 Hamburg</h2>
-    <div class="budget-wrap">
-    <table>
-      <thead><tr><th>Category</th><th>Low</th><th>High</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>🚆✈️ Return flight or train</td><td>600 kr</td><td>1.200 kr</td><td class="td-note">EuroCity Express train or direct flight — not price-checked</td></tr>
-        <tr><td>🏠 Accommodation (2 nights)</td><td>750 kr</td><td>1.200 kr</td><td class="td-note">Large apt St. Pauli, split 10 ways</td></tr>
-        <tr><td>⚽ HSV match ticket</td><td>150 kr</td><td>450 kr</td><td class="td-note">Bundesliga — varies by section</td></tr>
-        <tr><td>🚲 Beer bike tour</td><td>190 kr</td><td>260 kr</td><td class="td-note">1.5–2 hrs, beer included</td></tr>
-        <tr><td>🏎️ Outdoor go-karting</td><td>225 kr</td><td>340 kr</td><td class="td-note">Group session, timed heats</td></tr>
-        <tr><td>⚽ 5-a-side pitch hire</td><td>75 kr</td><td>150 kr</td><td class="td-note">1 hr pitch, split 10 ways</td></tr>
-        <tr><td>🛥️ Elbe boat cruise (Sun)</td><td>225 kr</td><td>375 kr</td><td class="td-note">Party cruise with DJ + bar</td></tr>
-        <tr><td>🍺 Food (2 dinners + breakfasts)</td><td>300 kr</td><td>525 kr</td><td class="td-note">Beer hall + Fischmarkt + brunch</td></tr>
-        <tr><td>🎰 Drinks / nightlife (2 nights)</td><td>375 kr</td><td>675 kr</td><td class="td-note">Reeperbahn + Sternschanze</td></tr>
-        <tr><td>🚕 Local transport</td><td>110 kr</td><td>190 kr</td><td class="td-note">U-Bahn + taxis</td></tr>
-        <tr class="total-row"><td>Subtotal</td><td>3.000 kr</td><td>5.365 kr</td><td class="td-note">Sum of the rows above</td></tr>
-        <tr><td>🛟 Contingency (15%)</td><td>450 kr</td><td>805 kr</td><td class="td-note">Buffer for price drift, extra rounds, taxis</td></tr>
-        <tr class="total-row"><td><strong>TOTAL PER PERSON</strong></td><td class="ham-total"><strong>3.450 kr</strong></td><td class="ham-total"><strong>6.200 kr</strong></td><td class="td-note">Incl. contingency, rounded up to nearest 50 kr</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <!-- PARIS -->
-  <div style="margin-bottom:40px;">
-    <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;color:var(--par);text-transform:uppercase;letter-spacing:-0.5px;margin-bottom:14px;">🇫🇷 Paris</h2>
-    <div class="budget-wrap">
-    <table>
-      <thead><tr><th>Category</th><th>Low</th><th>High</th><th>Notes</th></tr></thead>
-      <tbody>
-        <tr><td>✈️ Return flight (CPH–CDG)</td><td>750 kr</td><td>1.500 kr</td><td class="td-note">Air France / SAS / Norwegian / easyJet — not price-checked</td></tr>
-        <tr><td>🏠 Accommodation (2 nights)</td><td>750 kr</td><td>1.350 kr</td><td class="td-note">Large apt Montmartre or Le Marais, split 10 ways</td></tr>
-        <tr><td>⚽ PSG match ticket</td><td>225 kr</td><td>600 kr</td><td class="td-note">Ligue 1 home game, varies by fixture</td></tr>
-        <tr><td>🏎️ Go-karting</td><td>260 kr</td><td>375 kr</td><td class="td-note">Indoor track, group session</td></tr>
-        <tr><td>🛥️ Seine party cruise (Sat)</td><td>300 kr</td><td>490 kr</td><td class="td-note">Open bar option available</td></tr>
-        <tr><td>🍷 Food (2 dinners + breakfasts)</td><td>450 kr</td><td>750 kr</td><td class="td-note">Bistro dinner + boulangerie breakfasts</td></tr>
-        <tr><td>🎭 Drinks / nightlife (2 nights)</td><td>450 kr</td><td>750 kr</td><td class="td-note">Pigalle + Oberkampf — Paris is pricier</td></tr>
-        <tr><td>🚇 Local transport</td><td>150 kr</td><td>260 kr</td><td class="td-note">Metro carnets + RER B airport transfer</td></tr>
-        <tr class="total-row"><td>Subtotal</td><td>3.335 kr</td><td>6.075 kr</td><td class="td-note">Sum of the rows above</td></tr>
-        <tr><td>🛟 Contingency (15%)</td><td>500 kr</td><td>911 kr</td><td class="td-note">Buffer for price drift, extra rounds, taxis</td></tr>
-        <tr class="total-row"><td><strong>TOTAL PER PERSON</strong></td><td class="par-total"><strong>3.850 kr</strong></td><td class="par-total"><strong>7.000 kr</strong></td><td class="td-note">Incl. contingency, rounded up to nearest 50 kr</td></tr>
-      </tbody>
-    </table>
-    </div>
-  </div>
-
-  <!-- COMPARISON -->
-  <div class="sec-title">Side-by-Side Summary</div>
   <div class="budget-wrap">
-  <table class="cmp-table">
-    <thead><tr><th>City</th><th>Low estimate</th><th>High estimate</th><th>vs. Budapest</th></tr></thead>
+  <table>
+    <thead><tr><th>Post</th><th>Lav</th><th>Høj</th><th>Bemærkning</th></tr></thead>
     <tbody>
-      <tr><td style="color:var(--bud)">🇭🇺 Budapest</td><td class="bud-total"><strong>3.150 kr</strong></td><td class="bud-total"><strong>5.550 kr</strong></td><td style="color:var(--green)">Baseline</td></tr>
-      <tr><td style="color:var(--ham)">🇩🇪 Hamburg</td><td class="ham-total"><strong>3.450 kr</strong></td><td class="ham-total"><strong>6.200 kr</strong></td><td style="color:var(--muted)">+300 / +650 kr</td></tr>
-      <tr><td style="color:var(--par)">🇫🇷 Paris</td><td class="par-total"><strong>3.850 kr</strong></td><td class="par-total"><strong>7.000 kr</strong></td><td style="color:var(--muted)">+700 / +1.450 kr</td></tr>
+      <tr><td>✈️ Fly t/r (CPH–BUD)</td><td>900 kr</td><td>1.500 kr</td><td class="td-note"><strong>Prischecket</strong> — Wizz Air / Ryanair / Norwegian</td></tr>
+      <tr><td>🏠 Indkvartering (2 nætter)</td><td>450 kr</td><td>750 kr</td><td class="td-note">Stor lejlighed i distrikt VII, delt på 10</td></tr>
+      <tr><td>⚽ Kampbillet</td><td>75 kr</td><td>190 kr</td><td class="td-note">Ferencváros hjemmekamp i NB I</td></tr>
+      <tr><td>🎯 Skydebane</td><td>375 kr</td><td>675 kr</td><td class="td-note">Fra Hardcore/Capital til Churchill-pakken</td></tr>
+      <tr><td>🛥️ Donau-cruise (lør)</td><td>285 kr</td><td>480 kr</td><td class="td-note">Privat charter ~3.375 kr for båden, delt på 10; drikkevarer oveni</td></tr>
+      <tr><td>🍖 Mad (2 middage + morgenmad)</td><td>225 kr</td><td>410 kr</td><td class="td-note">Ungarsk grill + morgenmad på café</td></tr>
+      <tr><td>🍺 Drikkevarer og natteliv (2 aftener)</td><td>300 kr</td><td>600 kr</td><td class="td-note">Ruinbarer og klubber — meget billigt</td></tr>
+      <tr><td>🚕 Lokal transport</td><td>110 kr</td><td>190 kr</td><td class="td-note">Bolt og metro, meget overkommeligt</td></tr>
+      <tr class="total-row"><td>Delsum</td><td>2.720 kr</td><td>4.795 kr</td><td class="td-note">Summen af posterne ovenfor</td></tr>
+      <tr><td>🛟 Buffer (15 %)</td><td>408 kr</td><td>719 kr</td><td class="td-note">Til prisstigninger, ekstra omgange og taxaer</td></tr>
+      <tr class="total-row"><td><strong>I ALT PR. PERSON</strong></td><td class="bud-total"><strong>3.150 kr</strong></td><td class="bud-total"><strong>5.550 kr</strong></td><td class="td-note">Inkl. buffer, rundet op til nærmeste 50 kr</td></tr>
     </tbody>
   </table>
   </div>
 
-  <div class="verdict" style="margin-top:24px;">
-    <h3 style="color:var(--green)">For a group of 10 — the total difference</h3>
-    <p>Budapest saves roughly <strong>3.000–6.500 kr in total group spend</strong> compared to Hamburg, and <strong>7.000–14.500 kr</strong> compared to Paris. That's real money that stays in your pockets for more drinks, better dinners, or an extra activity.</p>
-    <p>Note that the gap to Hamburg is <strong>narrower than it used to look</strong>: the price-checked Budapest flight came in above the old desk estimate, while the Hamburg and Paris flight rows have not been re-checked. If their real fares also land higher, Budapest's lead widens again.</p>
-    <p>Paris is the most expensive but delivers the most iconic experience — PSG at the Parc des Princes, the Seine by night, and the world's greatest city as your backdrop. If the group can stretch the budget, it's worth every krone.</p>
+  <div class="verdict">
+    <h3 style="color:var(--green)">For en gruppe på 10</h3>
+    <p>Turen lander samlet på <strong>31.500–55.500 kr</strong> for hele holdet. Spændet er bredt, fordi det afhænger af, hvor tidligt flybilletterne købes, hvilken skydebane der vælges, og hvor hårdt der gås til den om aftenen.</p>
+    <p>De to poster, der reelt flytter noget, er <strong>flyet</strong> og <strong>skydebanen</strong>. Flyet bookes så tidligt som muligt — men først når hjemmekampen er bekræftet. Vælges Hardcore/Capital frem for Churchill, spares der ~335 kr pr. person, altså godt 3.000 kr for gruppen.</p>
+    <p>Kampbilletten er til gengæld nærmest gratis efter danske forhold: 75–190 kr for en topkamp i den bedste ungarske række.</p>
+  </div>
+
+  <div class="sec-title">Hvad der ikke er med</div>
+  <div class="tips">
+    <div class="tip"><h4>🧳 Bagage</h4><p>Wizz Air og Ryanair tager særskilt betaling for kufferter. Regn med 150–350 kr t/r, hvis der skal checkes bagage ind.</p></div>
+    <div class="tip"><h4>🛡️ Forsikring</h4><p>Rejseforsikring og det blå EU-sygesikringskort. Tjek at alle har det på plads.</p></div>
+    <div class="tip"><h4>🎁 Indkøb</h4><p>Paprika, pálinka og salami fra markedshallen. Sæt et par hundrede kroner af, hvis der skal handles med hjem.</p></div>
+    <div class="tip"><h4>💶 Kurs</h4><p>Alt er omregnet med 7,5 kr/euro. Ændrer kursen sig markant inden april 2027, forskubber hele tabellen sig tilsvarende.</p></div>
   </div>
 
 </div>
