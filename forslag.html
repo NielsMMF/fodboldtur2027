@@ -1,0 +1,264 @@
+<div class="section">
+
+  <button class="back" onclick="vis('alternativer')">← Tilbage til alternativer</button>
+
+  <div class="city-banner">
+    <div class="city-banner-name bud-color">Forslag</div>
+    <div class="city-banner-sub">Har du en bedre idé?<br>Skriv den her — så kommer den på alternativ-listen</div>
+  </div>
+
+  <div class="alert alert-ok">
+    <span class="alert-icon">💡</span>
+    <span><strong>Sådan virker det.</strong> Du udfylder felterne, trykker send, og forslaget lander som en mail. Derfra bliver det skrevet ind på <button class="back" style="margin:0;padding:0;color:var(--bud);letter-spacing:1px;" onclick="vis('alternativer')">alternativ-siden</button> med pris i kroner, link og både fordele og ulemper — præcis som de forslag, der allerede står der. Jo mere du udfylder, jo mindre skal gættes.</span>
+  </div>
+
+  <div class="alert alert-bud">
+    <span class="alert-icon">🔄</span>
+    <span><strong>Alternativer er erstatninger, ikke ekstra punkter.</strong> Programmet er tre dage, og der er ikke huller at fylde ud. Skriv derfor altid, <strong>hvad forslaget skal erstatte</strong> — ellers kan det ikke vurderes op mod det, der allerede står i programmet.</span>
+  </div>
+
+  <div class="sec-title">Dit forslag</div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIL-OPSÆTNING — skal gøres én gang
+
+       Formularen sender via Web3Forms, som ikke kræver en konto:
+         1. Gå på https://web3forms.com
+         2. Indtast mailadressen, forslagene skal sendes til
+         3. Nøglen (en lang kode) kommer i en mail
+         4. Sæt den ind mellem anførselstegnene i ADGANGSNOEGLE nedenfor
+
+       Mailadressen ligger hos Web3Forms og kommer IKKE i repoet —
+       nøglen er lavet til at stå offentligt i koden.
+
+       Uden nøgle virker siden stadig: forslaget bliver vist som en
+       færdig tekstblok med en kopiér-knap, som kan sendes i
+       Facebook-gruppen i stedet.
+       ══════════════════════════════════════════════════════════ -->
+
+  <form id="forslag-form" autocomplete="off">
+    <div class="form-grid">
+
+      <div class="field">
+        <label for="f-akt">Hvad er aktiviteten? <span class="req">*</span></label>
+        <span class="hint">Kort og konkret — navnet på stedet eller aktiviteten. Fx “Rudas termalbad” eller “Gokart på FlashKart”.</span>
+        <input type="text" id="f-akt" placeholder="Fx Gokart på FlashKart">
+      </div>
+
+      <div class="field">
+        <label for="f-erstat">Hvad skal det erstatte? <span class="req">*</span></label>
+        <span class="hint">Vælg det punkt i programmet, forslaget skal stå i stedet for.</span>
+        <select id="f-erstat">
+          <option value="">— vælg —</option>
+          <option>Skydebanen, fredag kl. 13</option>
+          <option>Opvarmningen i ruinbarerne, fredag kl. 16.30</option>
+          <option>Middagen, fredag kl. 19</option>
+          <option>Nattelivet, fredag kl. 21.30</option>
+          <option>Donau-cruise, lørdag kl. 13</option>
+          <option>Optakten før kampen, lørdag kl. 15</option>
+          <option>Efter kampen, lørdag kl. 21</option>
+          <option>Søndag formiddag, før hjemrejsen</option>
+          <option>Ved ikke — find selv en plads i programmet</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="f-sted">Sted og adresse</label>
+          <span class="hint">Navn, gade og distrikt, hvis du har det. Ellers bare navnet.</span>
+          <input type="text" id="f-sted" placeholder="Fx Döbrentei tér 9, distrikt I">
+        </div>
+
+        <div class="field">
+          <label for="f-link">Link</label>
+          <span class="hint">Hjemmeside eller Google Maps. Det er det, priser og åbningstider tjekkes på.</span>
+          <input type="text" id="f-link" placeholder="https://...">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="f-pris">Hvad koster det?</label>
+          <span class="hint">Skriv prisen, som den står på stedets egen side — i forint eller euro, og gerne pr. person. Den bliver regnet om til kroner bagefter.</span>
+          <input type="text" id="f-pris" placeholder="Fx 8.000 Ft pr. person">
+        </div>
+
+        <div class="field">
+          <label for="f-antal">Hvor mange kan være med?</label>
+          <span class="hint">Vi er 11. Skriv det, hvis der er en øvre grænse, eller hvis der skal deles i hold.</span>
+          <input type="text" id="f-antal" placeholder="Fx max 8 ad gangen, så to hold">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Skal det bookes i forvejen?</label>
+        <span class="hint">Alt, der skal bookes, skal være afgjort inden januar — derfor er det vigtigt at vide.</span>
+        <div class="radio-row">
+          <label><input type="radio" name="book" value="Ja">Ja</label>
+          <label><input type="radio" name="book" value="Nej — vi kan møde op">Nej</label>
+          <label><input type="radio" name="book" value="Ved ikke" checked>Ved ikke</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-hvorfor">Hvorfor er det en god idé? <span class="req">*</span></label>
+        <span class="hint">To-tre linjer. Det bliver stående som <strong>fordelene</strong> på kortet, så skriv det, der skal overbevise de andre.</span>
+        <textarea id="f-hvorfor" placeholder="Fx Billigere end skydebanen, alle kan være med uanset form, og det ligger ti minutters gang fra lejligheden."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="f-ulempe">Hvad er ulempen?</label>
+        <span class="hint">Vær ærlig — hvert kort på alternativ-siden har både fordele og ulemper, og ulemperne bliver skrevet uanset. Skriver du dem selv, bliver de rigtige.</span>
+        <textarea id="f-ulempe" placeholder="Fx Ligger i distrikt XIV, så der skal regnes 20 minutter i metro hver vej."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="f-navn">Dit navn <span class="req">*</span></label>
+        <span class="hint">Så det kan stå på kortet, hvem forslaget kom fra — og så du kan spørges, hvis noget er uklart.</span>
+        <input type="text" id="f-navn" placeholder="Fornavn er nok">
+      </div>
+
+      <div class="honey">
+        <label for="f-botcheck">Lad dette felt stå tomt</label>
+        <input type="text" id="f-botcheck" name="botcheck" tabindex="-1">
+      </div>
+
+      <button type="submit" class="btn-send" id="f-send">Send forslaget</button>
+      <div class="form-status" id="f-status"></div>
+    </div>
+  </form>
+
+  <div class="result" id="f-result">
+    <div class="sec-title">Forslaget som det blev sendt</div>
+    <p class="lead">Teksten nedenfor er præcis den, der ligger i mailen. Kom mailen ikke frem, så kopiér blokken her og send den i Facebook-gruppen i stedet — så bliver den skrevet ind alligevel.</p>
+    <pre id="f-blok"></pre>
+    <button class="btn-copy" id="f-copy">Kopiér teksten</button>
+  </div>
+
+  <div class="sec-title">Hvad gør et forslag nemt at sige ja til</div>
+  <div class="tips">
+    <div class="tip"><h4>🔗 Et link</h4><p>Uden link skal pris og åbningstider findes forfra, og så bliver kortet stående med “pris skal indhentes”.</p></div>
+    <div class="tip"><h4>💶 En pris i original valuta</h4><p>Skriv 8.000 Ft eller €25, ikke et gæt i kroner. Omregningen sker med kurs 7,5 bagefter, så alt på siden er sammenligneligt.</p></div>
+    <div class="tip"><h4>👥 Plads til 11</h4><p>Mange steder tager grupper op til 8. Er der en grænse, skal vi vide det — ellers står halvdelen af holdet udenfor.</p></div>
+    <div class="tip"><h4>🔄 Noget at bytte med</h4><p>Der er ikke plads til flere punkter, kun til bedre. Sig hvad der skal ud, så kan det vurderes.</p></div>
+    <div class="tip"><h4>⏰ Inden januar</h4><p>Skydebane, cruise og alt andet, der skal bookes, afgøres inden januar. Forslag efter det kan kun bruges på de ting, vi kan møde op til.</p></div>
+    <div class="tip"><h4>🙅 Ølcykel er afvist</h4><p>Ikke fordi ingen har spurgt — den er forbudt i distrikt VI og VII. Se begrundelsen på alternativ-siden, før du foreslår den igen.</p></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  /* Sæt nøglen fra web3forms.com ind her — se kommentaren ovenfor.
+     Tom streng = ingen mail, kun kopiér-blokken. */
+  const ADGANGSNOEGLE = '';
+
+  const form   = document.getElementById('forslag-form');
+  const status = document.getElementById('f-status');
+  const sendBtn = document.getElementById('f-send');
+  const result = document.getElementById('f-result');
+  const blok   = document.getElementById('f-blok');
+  const copyBtn = document.getElementById('f-copy');
+
+  const v = id => document.getElementById(id).value.trim();
+
+  function byg() {
+    const bookEl = form.querySelector('input[name=book]:checked');
+    const linjer = [
+      'AKTIVITETSFORSLAG TIL FODBOLDTUREN',
+      'Skriv dette ind som et nyt kort på alternativer.html.',
+      '',
+      'Aktivitet: '      + v('f-akt'),
+      'Foreslået af: '   + v('f-navn'),
+      'Skal erstatte: '  + v('f-erstat'),
+      'Sted og adresse: ' + (v('f-sted') || '(ikke oplyst)'),
+      'Link: '           + (v('f-link') || '(ikke oplyst)'),
+      'Pris: '           + (v('f-pris') || '(ikke oplyst — skal indhentes)'),
+      'Plads til: '      + (v('f-antal') || '(ikke oplyst)'),
+      'Skal bookes: '    + (bookEl ? bookEl.value : 'Ved ikke'),
+      '',
+      'FORDELE',
+      v('f-hvorfor'),
+      '',
+      'ULEMPER',
+      v('f-ulempe') || '(ingen oplyst — skal vurderes)',
+      '',
+      'Sendt fra forslagsformularen ' + new Date().toLocaleDateString('da-DK',
+        { day: 'numeric', month: 'long', year: 'numeric' }) + '.'
+    ];
+    return linjer.join('\n');
+  }
+
+  function fejl(besked, id) {
+    status.className = 'form-status is-err';
+    status.textContent = besked;
+    if (id) document.getElementById(id).focus();
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    if (v('f-botcheck')) return;
+    if (!v('f-akt'))     return fejl('Skriv hvad aktiviteten er.', 'f-akt');
+    if (!v('f-erstat'))  return fejl('Vælg hvad forslaget skal erstatte.', 'f-erstat');
+    if (!v('f-hvorfor')) return fejl('Skriv hvorfor det er en god idé.', 'f-hvorfor');
+    if (!v('f-navn'))    return fejl('Skriv dit navn.', 'f-navn');
+
+    const tekst = byg();
+    blok.textContent = tekst;
+
+    if (!ADGANGSNOEGLE) {
+      result.classList.add('is-open');
+      status.className = 'form-status';
+      status.textContent = 'Mailen er ikke sat op endnu — kopiér teksten nedenfor og send den i Facebook-gruppen.';
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
+    sendBtn.disabled = true;
+    status.className = 'form-status';
+    status.textContent = 'Sender …';
+
+    try {
+      const svar = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: ADGANGSNOEGLE,
+          subject: 'Aktivitetsforslag: ' + v('f-akt') + ' (fra ' + v('f-navn') + ')',
+          from_name: 'Fodboldtur 2027 — forslag',
+          message: tekst,
+          botcheck: ''
+        })
+      });
+      const data = await svar.json();
+      if (!svar.ok || !data.success) throw new Error(data.message || svar.status);
+
+      status.className = 'form-status is-ok';
+      status.textContent = 'Tak — forslaget er sendt.';
+      sendBtn.textContent = 'Sendt';
+    } catch (err) {
+      status.className = 'form-status is-err';
+      status.textContent = 'Mailen kunne ikke sendes. Kopiér teksten nedenfor og send den i Facebook-gruppen i stedet.';
+      sendBtn.disabled = false;
+    }
+
+    result.classList.add('is-open');
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(blok.textContent);
+      copyBtn.textContent = 'Kopieret';
+      setTimeout(() => { copyBtn.textContent = 'Kopiér teksten'; }, 2000);
+    } catch (e) {
+      const r = document.createRange();
+      r.selectNodeContents(blok);
+      const s = window.getSelection();
+      s.removeAllRanges(); s.addRange(r);
+      copyBtn.textContent = 'Markeret — tryk Ctrl+C';
+    }
+  });
+})();
+</script>

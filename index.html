@@ -375,6 +375,80 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .ham-total { color: var(--ham); }
 .par-total { color: var(--par); }
 
+/* ── FORMULAR ─────────────────────────────────────── */
+.form-grid { display: grid; gap: 14px; margin-bottom: 20px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.field {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.field > label {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.field .hint { display: block; font-size: 12px; color: var(--muted); line-height: 1.45; margin-bottom: 10px; }
+.field .req { color: var(--bud); }
+.field input[type=text], .field textarea, .field select {
+  width: 100%;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px; line-height: 1.5;
+  color: var(--text);
+  background: var(--dark);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 9px 11px;
+}
+.field textarea { resize: vertical; min-height: 78px; }
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: var(--bud);
+}
+.field input::placeholder, .field textarea::placeholder { color: #3f4a44; }
+.radio-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.radio-row label {
+  font-size: 13px;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 7px 13px; cursor: pointer; background: var(--dark);
+  display: flex; align-items: center; gap: 7px;
+}
+.radio-row label:hover { border-color: var(--muted); }
+.radio-row input { accent-color: var(--bud); margin: 0; }
+.honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.btn-send {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dark); background: var(--bud);
+  border: none; border-radius: 8px;
+  padding: 14px 32px; cursor: pointer; width: 100%;
+}
+.btn-send:hover { background: #ffb81c; }
+.btn-send:disabled { opacity: 0.5; cursor: default; }
+.btn-copy {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text); background: none;
+  border: 1px solid var(--border); border-radius: 6px;
+  padding: 9px 18px; cursor: pointer;
+}
+.btn-copy:hover { border-color: var(--bud); color: var(--bud); }
+.form-status { font-size: 13px; color: var(--muted); text-align: center; margin-top: 12px; min-height: 20px; }
+.form-status.is-err { color: var(--ham); }
+.form-status.is-ok  { color: var(--green); }
+.result { display: none; }
+.result.is-open { display: block; }
+.result pre {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+  font-size: 12px; line-height: 1.55;
+  color: var(--text); background: var(--dark);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 16px; margin-bottom: 12px;
+  white-space: pre-wrap; word-break: break-word;
+  max-height: 460px; overflow-y: auto;
+}
+
 /* ── TILBAGE-LINK ─────────────────────────────────── */
 .back {
   font-family: 'Barlow Condensed', sans-serif;
@@ -402,6 +476,9 @@ footer {
   .itin-row { grid-template-columns: 54px 1fr; row-gap: 4px; }
   .itin-more { grid-column: 2; }
   th, td { padding: 8px 10px; font-size: 12.5px; }
+  .form-row { grid-template-columns: 1fr; }
+  .field { padding: 12px 14px; }
+  .result pre { font-size: 11px; padding: 12px; }
 }
 </style>
 </head>
@@ -449,6 +526,7 @@ const SYNLIG = [
   ['fankort',   '🪪 Fankort'],
   ['barer',     '🍺 Barer'],
   ['alternativer', '🔄 Alternativer'],
+  ['forslag',   '💡 Forslag'],
   ['budget',    '💶 Budget'],
   ['rejsebureau', '🧳 Rejsebureau'],
 ];
@@ -491,6 +569,18 @@ async function vis(side, skrivHash = true) {
       const svar = await fetch(`${side}.html`);
       if (!svar.ok) throw new Error(svar.status);
       panel.innerHTML = await svar.text();
+
+      /* innerHTML kører ikke <script>. Scripts skal kopieres ind igen
+         for at blive udført, så et fragment kan have sin egen opsætning
+         (fx formularen på forslag.html). Panelet hentes kun én gang,
+         så hvert script kører netop én gang. */
+      panel.querySelectorAll('script').forEach(gammel => {
+        const ny = document.createElement('script');
+        for (const attr of gammel.attributes) ny.setAttribute(attr.name, attr.value);
+        ny.textContent = gammel.textContent;
+        gammel.replaceWith(ny);
+      });
+
       hentet[side] = true;
     } catch (e) {
       panel.innerHTML = `<div class="section" style="color:var(--muted);padding-top:60px;text-align:center;">Kunne ikke hente ${side}.html — tjek at alle filer ligger i samme mappe.</div>`;
