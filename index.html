@@ -397,6 +397,13 @@ footer {
 @media (max-width: 520px) {
   .hero { padding: 44px 20px 36px; }
   .section { padding: 28px 16px; }
+  /* Datoen kan ikke staa i en fast 132px-kolonne ved siden af et
+     beloeb med nowrap — den faar sin egen raekke paa mobil. */
+  .pay-step { grid-template-columns: 1fr auto; gap: 6px 12px; padding: 14px 16px; }
+  .pay-step .pay-date { grid-column: 1 / -1; }
+  .pay-amount { font-size: 26px; }
+  .pay-total { padding: 14px 16px 0; }
+  .pay-total .pay-amount { font-size: 28px; }
   .event { grid-template-columns: 52px 1fr; gap: 8px; padding: 12px 14px 12px 10px; }
   .day-num { font-size: 40px; }
   .itin-row { grid-template-columns: 54px 1fr; row-gap: 4px; }
