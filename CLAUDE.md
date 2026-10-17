@@ -1,6 +1,6 @@
 # Fodboldtur 2027 — projektkontekst
 
-Statisk hjemmeside til en fodboldtur for 7–12 mand til **Budapest 16.–18. april 2027**.
+Statisk hjemmeside til en fodboldtur for **11 mand** til **Budapest 16.–18. april 2027**.
 Siden er gruppens fælles arbejdspapir: program, budget, betalingsfrister og noter.
 
 Udgivet via GitHub Pages fra `main`: <https://nielsmmf.github.io/fodboldtur2027/>
@@ -37,19 +37,33 @@ med det samme.
 
 | Fil | Menupunkt | Indhold |
 |---|---|---|
-| `oversigt.html` | 📋 Oversigt | Forsiden: overordnet program + praktisk info |
+| `oversigt.html` | 📋 Program | Forsiden: **åbent** program + praktisk info |
 | `praktisk.html` | ⚠️ Vigtig info | Bindende tilmelding, rater, frister |
-| `skydebane.html` | 🎯 Skydebane | To baner at vælge imellem på dagen |
-| `donau.html` | 🛥️ Donau | Privat charter på Donau |
 | `kamp.html` | ⚽ Kampen | Ferencváros–Újpest, kampdagens forløb |
-| `fankort.html` | 🪪 Fankort | Guide til Fradi-fankort og VIP-vejen |
+| `billetter.html` | 🎟️ Billetter | VIP-planen, og hvorfor fankortet er droppet |
+| `aktiviteter.html` | 🎯 Aktiviteter | **Alle** aktiviteter, grupperet efter tid/besvær |
 | `barer.html` | 🍺 Barer | Barvalg pr. aften, fire retninger at vælge imellem |
-| `alternativer.html` | 🔄 Alternativer | **Erstatninger** for planlagte punkter, ikke ekstra punkter |
-| `budget.html` | 💶 Budget | Alle poster i kroner |
+| `spisesteder.html` | 🍖 Spisesteder | Restauranter grupperet efter prisleje |
+| `budget.html` | 💶 Budget | Faste poster og valgfrie aktiviteter hver for sig |
 | `rejsebureau.html` | 🧳 Rejsebureau | **Interne** arbejdsnoter — rejsebureauet er os selv |
 | `hamborg.html` | *(skjult)* | Fravalgt by · `index.html#hamborg` |
 | `paris.html` | *(skjult)* | Fravalgt by · `index.html#paris` |
 | `sammenlign.html` | *(skjult)* | Byvalg og budgetter for alle tre byer · `index.html#sammenlign` |
+
+### Det åbne program
+
+Forsiden er **rammer, ikke aftaler** — kun kampen ligger fast. Huller, hvor der er
+tid til en aktivitet, markeres med `class="itin-row is-open"` (grøn, stiplet kant)
+plus et `<span class="open-label">`, og de linker til `aktiviteter.html`.
+**Lav dem ikke om til faste punkter** uden at det er besluttet.
+
+### Mærkater på kort
+
+`aktiviteter.html` og `spisesteder.html` bruger `.meters`/`.meter` til at vise tid,
+besvær og pris. Skalaerne står på siderne selv og skal holdes ens:
+tid er **inkl. transport**, besvær er `meter-let`/`meter-middel`/`meter-tung`,
+og pris er 💰 / 💰💰 / 💰💰💰 — med **forskellige grænser** på de to sider
+(aktiviteter: 150/400 kr · spisesteder: 75/150 kr pr. hovedret).
 
 ### Forsiden som indgang
 
@@ -124,6 +138,14 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   efter tv-hensyn. Bliver det eftermiddagskamp, rykker både Donau-cruise og optakt.
 - **Vi er 11.** Alle 11 har betalt 1. rate og sendt rejseoplysninger; tilmeldingen
   er lukket. Fællesudgifter (lejlighed, bådcharter) deles på 11 — ikke på 10.
+- **Flybilletterne er købt** til alle 11. **Afgang København fredag kl. 12:50**,
+  ~1t 50min, landing ~14:40. Samme tidszone. Det betyder, at **fredag eftermiddag
+  ikke rummer en aktivitet** — kun bar og mad.
+- **Fankortet er droppet. Vi køber VIP.** Kortet kan kun laves personligt på stadion
+  og hænger ikke sammen med ankomsttiden. VIP kræver intet kort og giver egen
+  indgang, **adgang to timer før kampstart** og forplejning.
+- **Programmet er åbent.** Intet er booket ud over kampen. To huller er markeret:
+  lørdag 10:30–15:00 og søndag formiddag.
 - **To rater à 2.000 kr**, i alt 4.000 kr:
   1. **13. september 2026** — flybilletten. **Betalt af alle 11.**
   2. **6. december 2026** — lejligheden plus buffer. Næste og sidste frist.
@@ -138,7 +160,8 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   **3.150–5.250 kr** pr. person — **det tal indeholder de 4.000 kr**, de skal
   ikke lægges oveni. (Den fejl er lavet én gang: bufferen blev
   talt med to gange og gjorde egenbetalingen 430–755 kr for høj.)
-- **Skydebanen holdes som to muligheder**, der vælges på dagen — ikke booket på forhånd.
+- **Skydebanen er ikke længere et fast punkt** — den står som én valgfri aktivitet
+  blandt flere på `aktiviteter.html`, efter at fredag eftermiddag forsvandt.
 - **Ølcykel er droppet**: forbudt i distrikt VI og VII. Står som afvist med
   begrundelse i `alternativer.html`.
 
@@ -163,20 +186,32 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   ikke tilbage.) Fredag eftermiddag er derfor det eneste reelle vindue til fankort.
 - **A/B-fankort er ikke beskrevet.** Type A giver adgang til alle sektioner,
   type B kun til B1/B2/B3/C1 (ultra-sektionen). Mangler på `fankort.html`.
-- **Priser er estimater.** Flypriserne for april 2027 er ikke lagt ud endnu;
-  900–1.500 kr er fundet ved at søge tilsvarende datoer tidligere på året.
+- **VIP-prisen er ikke bekræftet.** De 470–750 kr i budgettet hviler på ældre,
+  uofficielle kilder (25.000–40.000 Ft). Klubben lægger ikke VIP-priser ud.
+  Skriv det ikke som en pris — det er et estimat, indtil klubben har givet tilbud.
+- **Uenighed om VIP-forplejningen.** Klubben har **på mail** skrevet *fri bar*;
+  **hjemmesiden** nævner kun *buffet* og intet om drikkevarer. Det er ikke afklaret,
+  og siden skal blive ved med at sige det, indtil der foreligger en skriftlig
+  bekræftelse.
+- **Flyprisen på siden er stadig estimatet.** Billetterne er købt, men den faktiske
+  pris er ikke oplyst, så budgettet viser fortsat 900–1.500 kr.
+- **Hjemrejsens afgangstid mangler.** Billetterne er købt, men tidspunktet står ikke
+  på siden. Det afgør, om der er tid til noget søndag.
 
 ---
 
 ## Åbne spørgsmål
 
-1. **Hvem lægger ud** for lejlighed, charter og kampbilletter, og hvordan afregnes
-   det? Mest presserende, nu 1. rate er i hus og flyet skal købes.
-2. **Er kampen en betingelse for turen,** hvis vi ikke kan få billetter til derbyet?
-3. **Kampstart** — afventer tv-programlægning.
-4. **Aktiviteterne** — som planlagt, eller et af alternativerne? Skal afgøres,
-   inden der bookes i januar.
-5. **Sengepladser til 11** — førstevalget har 5 soveværelser. Tjek det faktiske
+1. **Hvad koster VIP-billetten, og hvad er inkluderet?** Skal bekræftes skriftligt
+   hos klubben, før der betales. Den vigtigste udestående post.
+2. **Hvem lægger ud** for lejlighed og VIP-billetter, og hvordan afregnes det?
+   VIP-billetten kan formentlig tages af rate-pengene — der er 1.820–2.690 kr i luft.
+3. **Kampstart** — afventer tv-programlægning. Rykker den, rykker VIP-adgangen og
+   hele lørdagen med.
+4. **Hjemrejsens afgangstid** — købt, men ikke skrevet ind på siden.
+5. **Aktiviteterne** — nul, én eller to? Skal afgøres inden januar, hvis det er
+   noget, der skal bookes.
+6. **Sengepladser til 11** — førstevalget har 5 soveværelser. Tjek det faktiske
    antal senge frem for udlejerens kapacitetstal.
 
 *Antallet er ikke længere et åbent spørgsmål: vi er 11.*
