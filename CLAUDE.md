@@ -90,7 +90,10 @@ inline — det har været brækket før.
 ## Konventioner
 
 - **Alt læservendt er på dansk.** Også commit-beskeder og PR-tekster.
-- **Alle priser i danske kroner.** Kurs **EUR→DKK 7,5**; HUF→DKK ≈ 0,01875.
+- **Alle priser i danske kroner.** Kurs **EUR→DKK 7,5**; **HUF→DKK = 50 Ft pr. krone**
+  (0,02) — den kurs, VIP-billetten faktisk blev vekslet til. Bemærk: ældre
+  forint-beløb på siderne er omregnet med 0,01875 og står derfor **~7 % for lavt**.
+  Rettes de, skal det gøres samlet.
   Enkeltposter rundes til nærmeste 5 kr, totaler **op** til nærmeste 50 kr.
   Står der en original pris (`2.000 Ft`), sættes kronebeløbet i parentes efter.
 - **15 % buffer** oven på budgettet, rundet op.
@@ -138,12 +141,13 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   efter tv-hensyn. Bliver det eftermiddagskamp, rykker både Donau-cruise og optakt.
 - **Vi er 11.** Alle 11 har betalt 1. rate og sendt rejseoplysninger; tilmeldingen
   er lukket. Fællesudgifter (lejlighed, bådcharter) deles på 11 — ikke på 10.
-- **Flybilletterne er købt** til alle 11. **Afgang København fredag kl. 12:50**,
-  ~1t 50min, landing ~14:40. Samme tidszone. Det betyder, at **fredag eftermiddag
-  ikke rummer en aktivitet** — kun bar og mad.
+- **Flybilletterne er købt** til alle 11 til **~1.300 kr pr. mand**. **Afgang
+  København fredag kl. 12:50**, ~1t 50min, landing ~14:40. Samme tidszone. Det
+  betyder, at **fredag eftermiddag ikke rummer en aktivitet** — kun bar og mad.
 - **Fankortet er droppet. Vi køber VIP.** Kortet kan kun laves personligt på stadion
   og hænger ikke sammen med ankomsttiden. VIP kræver intet kort og giver egen
   indgang, **adgang to timer før kampstart** og forplejning.
+  **Prisen er oplyst: 32.000 Ft ≈ 640 kr pr. mand** (~352.000 Ft for 11).
 - **Programmet er åbent.** Intet er booket ud over kampen. To huller er markeret:
   lørdag 10:30–15:00 og søndag formiddag.
 - **To rater à 2.000 kr**, i alt 4.000 kr:
@@ -151,19 +155,26 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   2. **6. december 2026** — lejligheden plus buffer. Næste og sidste frist.
   Raterne dækker **kun** fly og lejlighed. Fly + lejlighed er estimeret til
   1.310–2.180 kr pr. person, så der er luft; **overskuddet betales tilbage**.
-- **Aktiviteterne kan formentlig tages af rate-pengene** (skydebane + cruise =
-  680–980 kr). Skal besluttes, inden der bookes.
+- **Budget uden aktiviteter: 3.450–4.400 kr pr. person.** Fly (1.300) og VIP (640)
+  er nu faste tal, så spændet er faldet fra 1.950 til 950 kr. Fly + lejlighed koster
+  1.710–1.980 kr, så der er **2.020–2.290 kr i luft** i raterne — og stadig
+  1.380–1.650 kr tilbage, hvis VIP-billetten tages af puljen.
+- **Folk må gerne foreslå barer, spisesteder og aktiviteter**, men skal selv
+  researche dem. Kravene står ens på `aktiviteter.html`, `barer.html` og
+  `spisesteder.html`: navn og adresse, link, pris i original valuta, plads til 11,
+  og om det skal bookes. Forslag sendes i Facebook-gruppen.
+  **Hold de tre blokke enslydende**, hvis en af dem ændres.
 - **Tilmelding = penge og rejseoplysninger samtidig.** Mangler den ene, tæller man
   ikke som tilmeldt.
-- **Egenbetaling undervejs:** ca. **710–1.390 kr** til mad, drikke, kampbillet og
-  transport (uændret af antallet — ingen af de poster deles). Samlet turpris
-  **3.150–5.250 kr** pr. person — **det tal indeholder de 4.000 kr**, de skal
-  ikke lægges oveni. (Den fejl er lavet én gang: bufferen blev
-  talt med to gange og gjorde egenbetalingen 430–755 kr for høj.)
+- **Egenbetaling undervejs:** **1.275–1.840 kr** med VIP-billetten, eller
+  **635–1.200 kr** hvis billetten tages af rate-pengene. Samlet turpris
+  **3.450–4.400 kr** pr. person — **det tal indeholder de 4.000 kr**, de skal
+  ikke lægges oveni. (Den fejl er lavet én gang: bufferen blev talt med to gange
+  og gjorde egenbetalingen 430–755 kr for høj.)
 - **Skydebanen er ikke længere et fast punkt** — den står som én valgfri aktivitet
   blandt flere på `aktiviteter.html`, efter at fredag eftermiddag forsvandt.
 - **Ølcykel er droppet**: forbudt i distrikt VI og VII. Står som afvist med
-  begrundelse i `alternativer.html`.
+  begrundelse i `aktiviteter.html`.
 
 ---
 
@@ -186,15 +197,10 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   ikke tilbage.) Fredag eftermiddag er derfor det eneste reelle vindue til fankort.
 - **A/B-fankort er ikke beskrevet.** Type A giver adgang til alle sektioner,
   type B kun til B1/B2/B3/C1 (ultra-sektionen). Mangler på `fankort.html`.
-- **VIP-prisen er ikke bekræftet.** De 470–750 kr i budgettet hviler på ældre,
-  uofficielle kilder (25.000–40.000 Ft). Klubben lægger ikke VIP-priser ud.
-  Skriv det ikke som en pris — det er et estimat, indtil klubben har givet tilbud.
 - **Uenighed om VIP-forplejningen.** Klubben har **på mail** skrevet *fri bar*;
   **hjemmesiden** nævner kun *buffet* og intet om drikkevarer. Det er ikke afklaret,
   og siden skal blive ved med at sige det, indtil der foreligger en skriftlig
   bekræftelse.
-- **Flyprisen på siden er stadig estimatet.** Billetterne er købt, men den faktiske
-  pris er ikke oplyst, så budgettet viser fortsat 900–1.500 kr.
 - **Hjemrejsens afgangstid mangler.** Billetterne er købt, men tidspunktet står ikke
   på siden. Det afgør, om der er tid til noget søndag.
 
@@ -202,10 +208,10 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
 
 ## Åbne spørgsmål
 
-1. **Hvad koster VIP-billetten, og hvad er inkluderet?** Skal bekræftes skriftligt
-   hos klubben, før der betales. Den vigtigste udestående post.
+1. **Hvad omfatter VIP-forplejningen?** Prisen er på plads (32.000 Ft), men
+   buffet-eller-fri-bar er ikke afklaret. Skal bekræftes skriftligt før betaling.
 2. **Hvem lægger ud** for lejlighed og VIP-billetter, og hvordan afregnes det?
-   VIP-billetten kan formentlig tages af rate-pengene — der er 1.820–2.690 kr i luft.
+   VIP-billetten på 640 kr kan rummes i rate-pengene — der er 2.020–2.290 kr i luft.
 3. **Kampstart** — afventer tv-programlægning. Rykker den, rykker VIP-adgangen og
    hele lørdagen med.
 4. **Hjemrejsens afgangstid** — købt, men ikke skrevet ind på siden.
