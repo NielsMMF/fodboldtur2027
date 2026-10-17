@@ -63,7 +63,8 @@ plus et `<span class="open-label">`, og de linker til `aktiviteter.html`.
 besvær og pris. Skalaerne står på siderne selv og skal holdes ens:
 tid er **inkl. transport**, besvær er `meter-let`/`meter-middel`/`meter-tung`,
 og pris er 💰 / 💰💰 / 💰💰💰 — med **forskellige grænser** på de to sider
-(aktiviteter: 150/400 kr · spisesteder: 75/150 kr pr. hovedret).
+(aktiviteter: 150/400 kr · spisesteder: op til 75 / 75–150 / over 150 kr pr. hovedret).
+**Tjek grænserne, hvis kursen ændres** — et beløb kan skifte kategori.
 
 ### Forsiden som indgang
 
@@ -90,10 +91,11 @@ inline — det har været brækket før.
 ## Konventioner
 
 - **Alt læservendt er på dansk.** Også commit-beskeder og PR-tekster.
-- **Alle priser i danske kroner.** Kurs **EUR→DKK 7,5**; **HUF→DKK = 50 Ft pr. krone**
-  (0,02) — den kurs, VIP-billetten faktisk blev vekslet til. Bemærk: ældre
-  forint-beløb på siderne er omregnet med 0,01875 og står derfor **~7 % for lavt**.
-  Rettes de, skal det gøres samlet.
+- **Alle priser i danske kroner.** Kurs **EUR→DKK 7,5**; **HUF→DKK = 0,021**,
+  altså ca. **48 Ft pr. krone** (tommelfingerregel: 1.000 Ft ≈ 21 kr). Forint-kursen
+  er bevidst sat i den **øvre ende** af markedskursen (observeret 0,0206–0,0210 i
+  2026), så beløbene hellere er lidt for høje end for lave. Alle forint-beløb på
+  siderne er omregnet med den — der er ingen rester fra den gamle 0,01875.
   Enkeltposter rundes til nærmeste 5 kr, totaler **op** til nærmeste 50 kr.
   Står der en original pris (`2.000 Ft`), sættes kronebeløbet i parentes efter.
 - **15 % buffer** oven på budgettet, rundet op.
@@ -147,7 +149,7 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
 - **Fankortet er droppet. Vi køber VIP.** Kortet kan kun laves personligt på stadion
   og hænger ikke sammen med ankomsttiden. VIP kræver intet kort og giver egen
   indgang, **adgang to timer før kampstart** og forplejning.
-  **Prisen er oplyst: 32.000 Ft ≈ 640 kr pr. mand** (~352.000 Ft for 11).
+  **Prisen er oplyst: 32.000 Ft ≈ 670 kr pr. mand** (~352.000 Ft ≈ 7.390 kr for 11).
 - **Programmet er åbent.** Intet er booket ud over kampen. To huller er markeret:
   lørdag 10:30–15:00 og søndag formiddag.
 - **To rater à 2.000 kr**, i alt 4.000 kr:
@@ -155,10 +157,10 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   2. **6. december 2026** — lejligheden plus buffer. Næste og sidste frist.
   Raterne dækker **kun** fly og lejlighed. Fly + lejlighed er estimeret til
   1.310–2.180 kr pr. person, så der er luft; **overskuddet betales tilbage**.
-- **Budget uden aktiviteter: 3.450–4.400 kr pr. person.** Fly (1.300) og VIP (640)
+- **Budget uden aktiviteter: 3.500–4.450 kr pr. person.** Fly (1.300) og VIP (~670)
   er nu faste tal, så spændet er faldet fra 1.950 til 950 kr. Fly + lejlighed koster
   1.710–1.980 kr, så der er **2.020–2.290 kr i luft** i raterne — og stadig
-  1.380–1.650 kr tilbage, hvis VIP-billetten tages af puljen.
+  1.350–1.620 kr tilbage, hvis VIP-billetten tages af puljen.
 - **Folk må gerne foreslå barer, spisesteder og aktiviteter**, men skal selv
   researche dem. Kravene står ens på `aktiviteter.html`, `barer.html` og
   `spisesteder.html`: navn og adresse, link, pris i original valuta, plads til 11,
@@ -166,9 +168,9 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   **Hold de tre blokke enslydende**, hvis en af dem ændres.
 - **Tilmelding = penge og rejseoplysninger samtidig.** Mangler den ene, tæller man
   ikke som tilmeldt.
-- **Egenbetaling undervejs:** **1.275–1.840 kr** med VIP-billetten, eller
+- **Egenbetaling undervejs:** **1.305–1.870 kr** med VIP-billetten, eller
   **635–1.200 kr** hvis billetten tages af rate-pengene. Samlet turpris
-  **3.450–4.400 kr** pr. person — **det tal indeholder de 4.000 kr**, de skal
+  **3.500–4.450 kr** pr. person — **det tal indeholder de 4.000 kr**, de skal
   ikke lægges oveni. (Den fejl er lavet én gang: bufferen blev talt med to gange
   og gjorde egenbetalingen 430–755 kr for høj.)
 - **Skydebanen er ikke længere et fast punkt** — den står som én valgfri aktivitet
@@ -211,7 +213,7 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
 1. **Hvad omfatter VIP-forplejningen?** Prisen er på plads (32.000 Ft), men
    buffet-eller-fri-bar er ikke afklaret. Skal bekræftes skriftligt før betaling.
 2. **Hvem lægger ud** for lejlighed og VIP-billetter, og hvordan afregnes det?
-   VIP-billetten på 640 kr kan rummes i rate-pengene — der er 2.020–2.290 kr i luft.
+   VIP-billetten på ~670 kr kan rummes i rate-pengene — der er 2.020–2.290 kr i luft.
 3. **Kampstart** — afventer tv-programlægning. Rykker den, rykker VIP-adgangen og
    hele lørdagen med.
 4. **Hjemrejsens afgangstid** — købt, men ikke skrevet ind på siden.
