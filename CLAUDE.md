@@ -89,6 +89,12 @@ inline — det har været brækket før.
 - **Ret tal alle steder på én gang.** Samme beløb står typisk i `oversigt.html`,
   `budget.html`, `praktisk.html` og på detaljesiden. En opsummeringstabel er blevet
   glemt før.
+- **Fællesudgifter deles på 11.** Lejligheden (2.250–3.750 kr pr. nat i alt) og
+  bådcharteren (~3.375 kr for båden) er de eneste poster, hvor antallet indgår.
+  Ændrer antallet sig, er det dem — og kun dem — der skal regnes om.
+- **De skjulte bysider regnes ikke om.** `hamborg.html`, `paris.html` og
+  `sammenlign.html` står med tallene fra dengang (gruppe på 10), fordi det er den
+  sammenligning, beslutningen blev truffet på. `sammenlign.html` siger det selv.
 - **Tjek adresser og priser mod to kilder.** Flere venue-adresser kom forkerte hjem
   fra første søgning. Skriv ikke detaljer, du ikke har verificeret — det er blevet
   fanget flere gange.
@@ -116,18 +122,21 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   Budapest-derbyet. Passer præcis til lørdagen i programmet.
 - **Kampstart er ikke fastlagt.** De 18:00 i programmet er et gæt; derbyer placeres
   efter tv-hensyn. Bliver det eftermiddagskamp, rykker både Donau-cruise og optakt.
+- **Vi er 11.** Alle 11 har betalt 1. rate og sendt rejseoplysninger; tilmeldingen
+  er lukket. Fællesudgifter (lejlighed, bådcharter) deles på 11 — ikke på 10.
 - **To rater à 2.000 kr**, i alt 4.000 kr:
-  1. **13. september 2026** — flybilletten. Herefter er tilmeldingen bindende.
-  2. **6. december 2026** — lejligheden plus buffer.
+  1. **13. september 2026** — flybilletten. **Betalt af alle 11.**
+  2. **6. december 2026** — lejligheden plus buffer. Næste og sidste frist.
   Raterne dækker **kun** fly og lejlighed. Fly + lejlighed er estimeret til
-  1.350–2.250 kr pr. person, så der er luft; **overskuddet betales tilbage**.
+  1.310–2.180 kr pr. person, så der er luft; **overskuddet betales tilbage**.
 - **Aktiviteterne kan formentlig tages af rate-pengene** (skydebane + cruise =
-  660–1.155 kr). Skal besluttes, inden der bookes.
+  680–980 kr). Skal besluttes, inden der bookes.
 - **Tilmelding = penge og rejseoplysninger samtidig.** Mangler den ene, tæller man
   ikke som tilmeldt.
 - **Egenbetaling undervejs:** ca. **710–1.390 kr** til mad, drikke, kampbillet og
-  transport. Samlet turpris 3.150–5.550 kr pr. person — **det tal indeholder de
-  4.000 kr**, de skal ikke lægges oveni. (Den fejl er lavet én gang: bufferen blev
+  transport (uændret af antallet — ingen af de poster deles). Samlet turpris
+  **3.150–5.250 kr** pr. person — **det tal indeholder de 4.000 kr**, de skal
+  ikke lægges oveni. (Den fejl er lavet én gang: bufferen blev
   talt med to gange og gjorde egenbetalingen 430–755 kr for høj.)
 - **Skydebanen holdes som to muligheder**, der vælges på dagen — ikke booket på forhånd.
 - **Ølcykel er droppet**: forbudt i distrikt VI og VII. Står som afvist med
@@ -149,9 +158,9 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
 - **Kampdatoen er læst i kampprogrammet, ikke bekræftet hos klubben.** Det lykkedes
   ikke at nå en primær kilde (nb1.hu, fradi.hu, m4sport.hu var alle blokeret fra
   dette miljø). Forbeholdet står på siden.
-- **Åbningstiderne på `fankort.html` er forkerte.** Der står "man–fre 10:00–18:00".
-  Billetkontoret har reelt **tir–fre 10:00–18:00 og lør 09:00–13:00 — søndag og
-  mandag er lukket.** Står to steder på siden (tidslinjen og et tip). Skal rettes.
+- **Billetkontorets åbningstid** er **tir–fre 10:00–18:00 og lør 09:00–13:00 —
+  søndag og mandag lukket.** (Stod tidligere som "man–fre" og er rettet; skriv det
+  ikke tilbage.) Fredag eftermiddag er derfor det eneste reelle vindue til fankort.
 - **A/B-fankort er ikke beskrevet.** Type A giver adgang til alle sektioner,
   type B kun til B1/B2/B3/C1 (ultra-sektionen). Mangler på `fankort.html`.
 - **Priser er estimater.** Flypriserne for april 2027 er ikke lagt ud endnu;
@@ -161,13 +170,16 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
 
 ## Åbne spørgsmål
 
-1. **Hvor mange er vi?** Alt regner med 7–12 og deler lejligheden på 10.
-   Er vi kun 7, stiger prisen pr. person mærkbart på lejlighed og båd.
-2. **Hvem lægger ud** for lejlighed, charter og kampbilletter, og hvordan afregnes det?
-3. **Er kampen en betingelse for turen,** hvis vi ikke kan få billetter til derbyet?
-4. **Kampstart** — afventer tv-programlægning.
-5. **Aktiviteterne** — som planlagt, eller et af alternativerne? Skal afgøres,
+1. **Hvem lægger ud** for lejlighed, charter og kampbilletter, og hvordan afregnes
+   det? Mest presserende, nu 1. rate er i hus og flyet skal købes.
+2. **Er kampen en betingelse for turen,** hvis vi ikke kan få billetter til derbyet?
+3. **Kampstart** — afventer tv-programlægning.
+4. **Aktiviteterne** — som planlagt, eller et af alternativerne? Skal afgøres,
    inden der bookes i januar.
+5. **Sengepladser til 11** — førstevalget har 5 soveværelser. Tjek det faktiske
+   antal senge frem for udlejerens kapacitetstal.
+
+*Antallet er ikke længere et åbent spørgsmål: vi er 11.*
 
 ---
 
