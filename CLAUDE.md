@@ -91,6 +91,13 @@ inline — det har været brækket før.
 ## Konventioner
 
 - **Alt læservendt er på dansk.** Også commit-beskeder og PR-tekster.
+- **Skriv "det jødiske kvarter"**, aldrig "jødekvarteret". Det sidste har en
+  ubehagelig klang på dansk. Gælder også bøjninger og sammensætninger.
+- **Siden foreslår, den bestemmer ikke.** Den, der vedligeholder siden, er
+  administrator for turen — ikke rejseleder. Skriv **"den klassiske åbning er …"**,
+  **"det oplagte bud er …"**, **"mange gør …"** frem for "først gør vi …",
+  "ingen diskussion" eller "det faste sted". Argumenterne for et sted må gerne være
+  stærke; det er formen, der skal lade folk vælge selv.
 - **Alle priser i danske kroner.** Kurs **EUR→DKK 7,5**; **HUF→DKK = 0,021**,
   altså ca. **48 Ft pr. krone** (tommelfingerregel: 1.000 Ft ≈ 21 kr). Forint-kursen
   er bevidst sat i den **øvre ende** af markedskursen (observeret 0,0206–0,0210 i
@@ -143,15 +150,20 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   efter tv-hensyn. Bliver det eftermiddagskamp, rykker både Donau-cruise og optakt.
 - **Vi er 11.** Alle 11 har betalt 1. rate og sendt rejseoplysninger; tilmeldingen
   er lukket. Fællesudgifter (lejlighed, bådcharter) deles på 11 — ikke på 10.
-- **Flybilletterne er købt** til alle 11 til **~1.300 kr pr. mand**. **Afgang
-  København fredag kl. 12:50**, ~1t 50min, landing ~14:40. Samme tidszone. Det
-  betyder, at **fredag eftermiddag ikke rummer en aktivitet** — kun bar og mad.
+- **Flybilletterne er købt** til alle 11 til **~1.300 kr pr. mand**, begge veje.
+  **Ud: København fredag 12:50**, landing Budapest ~14:40.
+  **Hjem: Budapest søndag 15:55**, i København ~17:45. Samme tidszone.
+  To konsekvenser, der styrer programmet: **fredag eftermiddag rummer ingen
+  aktivitet** (kun bar og mad), og **søndag er der kun ca. to timer** — afsted mod
+  lufthavnen ved 13-tiden, med bagagen på slæb.
 - **Fankortet er droppet. Vi køber VIP.** Kortet kan kun laves personligt på stadion
   og hænger ikke sammen med ankomsttiden. VIP kræver intet kort og giver egen
   indgang, **adgang to timer før kampstart** og forplejning.
   **Prisen er oplyst: 32.000 Ft ≈ 670 kr pr. mand** (~352.000 Ft ≈ 7.390 kr for 11).
 - **Programmet er åbent.** Intet er booket ud over kampen. To huller er markeret:
-  lørdag 10:30–15:00 og søndag formiddag.
+  **lørdag 10:30–15:00** (godt fire timer) og **søndag 10:30–12:45** (ca. to timer).
+  Alt mærket *halv dag* eller derover kan kun lade sig gøre lørdag — Széchenyi-badet
+  tager 3–4 timer og kan altså ikke nås søndag, selvom det ellers ville passe.
 - **To rater à 2.000 kr**, i alt 4.000 kr:
   1. **13. september 2026** — flybilletten. **Betalt af alle 11.**
   2. **6. december 2026** — lejligheden plus buffer. Næste og sidste frist.
@@ -203,8 +215,12 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
   **hjemmesiden** nævner kun *buffet* og intet om drikkevarer. Det er ikke afklaret,
   og siden skal blive ved med at sige det, indtil der foreligger en skriftlig
   bekræftelse.
-- **Hjemrejsens afgangstid mangler.** Billetterne er købt, men tidspunktet står ikke
-  på siden. Det afgør, om der er tid til noget søndag.
+- **Søndagens Premier League-kampe nås ikke.** De tidligste ligger typisk 15:00
+  dansk/ungarsk tid, hvor vi skal være i lufthavnen. Sportsbaren søndag er et sted
+  at lande med bagagen, ikke et sted at se fodbold — og det står på `barer.html`.
+- **Bagageopbevaring søndag.** Udtjekning ligger typisk 10–11, men vi skal først
+  afsted ved 13-tiden. Spørg udlejeren om sen udtjekning eller opbevaring; ellers
+  slæber elleve mand kufferter rundt i to timer.
 
 ---
 
@@ -216,10 +232,9 @@ heller ikke i commit-beskeder eller PR-tekster. Offentlige virksomhedsadresser
    VIP-billetten på ~670 kr kan rummes i rate-pengene — der er 2.020–2.290 kr i luft.
 3. **Kampstart** — afventer tv-programlægning. Rykker den, rykker VIP-adgangen og
    hele lørdagen med.
-4. **Hjemrejsens afgangstid** — købt, men ikke skrevet ind på siden.
-5. **Aktiviteterne** — nul, én eller to? Skal afgøres inden januar, hvis det er
-   noget, der skal bookes.
-6. **Sengepladser til 11** — førstevalget har 5 soveværelser. Tjek det faktiske
+4. **Aktiviteterne** — nul, én eller to? Skal afgøres inden januar, hvis det er
+   noget, der skal bookes. Bemærk at søndagshullet kun rummer noget kort.
+5. **Sengepladser til 11** — førstevalget har 5 soveværelser. Tjek det faktiske
    antal senge frem for udlejerens kapacitetstal.
 
 *Antallet er ikke længere et åbent spørgsmål: vi er 11.*
